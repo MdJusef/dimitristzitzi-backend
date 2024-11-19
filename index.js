@@ -7,7 +7,7 @@ const path = require("path");
 const databaseConnection = require("./config/database");
 const UserRouter = require("./routes/user.route");
 const AuthRouter = require("./routes/auth.route");
-const ServiceRouter = require("./routes/service.route");
+const CourseRouter = require("./routes/course.route");
 const AppointmentRouter = require("./routes/appointment.route");
 const ChatRouter = require("./routes/chat.route");
 const NoteRouter = require("./routes/note.route");
@@ -52,7 +52,7 @@ app.use("/public", express.static(path.join(__dirname, "public")));
 
 app.use("/users", UserRouter);
 app.use("/users", AuthRouter);
-app.use("/service", ServiceRouter);
+app.use("/course", CourseRouter);
 app.use("/appointment", AppointmentRouter);
 app.use("/payment", PaymentRouter);
 app.use("/note", NoteRouter);

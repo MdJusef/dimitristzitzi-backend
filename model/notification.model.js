@@ -12,9 +12,9 @@ const notificationSchema = new mongoose.Schema(
       ref: "User",
       required: false, // The admin managing the application
     },
-    serviceId: {
+    course: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Service",
+      ref: "Course",
       required: false,
     },
     status: {
@@ -36,7 +36,7 @@ const notificationSchema = new mongoose.Schema(
     },
     type: {
       type: String,
-      enum: ["service", "appointment", "others"],
+      // enum: ["service", "appointment", "others"],
       default: "others",
     },
   },
