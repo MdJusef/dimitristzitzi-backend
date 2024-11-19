@@ -43,6 +43,12 @@ const userSchema = new mongoose.Schema(
     dateOfBirth: {
       type: Date,
     },
+    profession: {
+      type: String,
+    },
+    companyName: {
+      type: String,
+    },
     notifications: [
       { type: mongoose.Schema.Types.ObjectId, ref: "Notification" },
     ],
