@@ -3,14 +3,13 @@ const routes = express();
 const {
   addCourse,
   getAllCourses,
-  getServiceById,
-  getServiceByDoctorId,
-  updateServiceById,
-  deleteServiceById,
-  disableServiceById,
-  enableServiceById,
-  approveServiceById,
-  cancelServiceById,
+  getCourseById,
+  getCourseByInstructorId,
+  updateCourseById,
+  deleteCourseById,
+  toggleEnableDisableCourse,
+
+  toggleApproveCancelCourse,
 } = require("../controller/course.controller");
 const { userValidator, authValidator } = require("../middleware/validation");
 const {
@@ -23,51 +22,25 @@ routes.post("/add-course", isAuthorizedUser, courseFileUpload(), addCourse);
 
 routes.get("/get-all-courses", getAllCourses);
 
-routes.get(
-  "/get-service-by-id/:id",
+routes.get("/get-course-by-id/:id", getCourseById);
 
-  getServiceById
+routes.get("/get-course-by-instructor-id/:id", getCourseByInstructorId);
+
+routes.put(
+  "/update-course-by-id/:id",
+  isAuthorizedUser,
+  courseFileUpload(),
+  updateCourseById
 );
 
-routes.get(
-  "/get-service-by-doctorId/:id",
+routes.delete("/delete-course-by-id/:id", deleteCourseById);
 
-  getServiceByDoctorId
-);
-
-routes.put("/update-service-by-id/:id", isAuthorizedAdmin, updateServiceById);
-
-routes.delete(
-  "/delete-service-by-id/:id",
-  isAuthorizedAdmin,
-  deleteServiceById
-);
+routes.patch("/toggle-enable-disable-course/:id", toggleEnableDisableCourse);
 
 routes.patch(
-  "/disable-service-by-id/:id",
+  "/toggle-approve-cancel-course/:id",
   isAuthorizedAdmin,
-  disableServiceById
-);
-
-routes.patch(
-  "/enable-service-by-id/:id",
-
-  isAuthorizedAdmin,
-  enableServiceById
-);
-
-routes.patch(
-  "/approve-service-by-id/:id",
-
-  isAuthorizedAdmin,
-  approveServiceById
-);
-
-routes.patch(
-  "/cancel-service-by-id/:id",
-
-  isAuthorizedAdmin,
-  cancelServiceById
+  toggleApproveCancelCourse
 );
 
 module.exports = routes;

@@ -40,6 +40,7 @@ const addCourse = async (req, res) => {
     const parsedRequirements = Array.isArray(requirements)
       ? requirements
       : JSON.parse(requirements || "[]");
+
     const parsedTeachingMaterials = Array.isArray(teachingMaterials)
       ? teachingMaterials
       : JSON.parse(teachingMaterials || "[]");
@@ -61,6 +62,7 @@ const addCourse = async (req, res) => {
       requirements: parsedRequirements,
       welcomeMessage,
       congratulationsMessage,
+      instructor: instructor._id,
     });
 
     if (!newCourse) {
@@ -116,24 +118,92 @@ const addCourse = async (req, res) => {
   }
 };
 
-const updateServiceById = async (req, res) => {
+const updateCourseById = async (req, res) => {
   try {
     if (!req.params.id) {
       return res
         .status(HTTP_STATUS.NOT_FOUND)
-        .send(failure("Please provide service id"));
+        .send(failure("Please provide course id"));
     }
-    const service = await Course.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
-    if (!service) {
+    const {
+      title,
+      subtitle,
+      price,
+      platformFees,
+      category,
+      subCategory,
+      topic,
+      language,
+      level,
+      duration,
+      description,
+      teachingMaterials,
+      targetAudience,
+      requirements,
+      welcomeMessage,
+      congratulationsMessage,
+    } = req.body;
+
+    const course = await Course.findById(req.params.id);
+    if (!course) {
       return res
         .status(HTTP_STATUS.NOT_FOUND)
-        .send(failure("Service not found"));
+        .send(failure("course not found"));
     }
+
+    const parsedTargetAudience = Array.isArray(targetAudience)
+      ? targetAudience
+      : JSON.parse(targetAudience || "[]");
+
+    const parsedRequirements = Array.isArray(requirements)
+      ? requirements
+      : JSON.parse(requirements || "[]");
+
+    const parsedTeachingMaterials = Array.isArray(teachingMaterials)
+      ? teachingMaterials
+      : JSON.parse(teachingMaterials || "[]");
+
+    course.title = title || course.title;
+    course.subtitle = subtitle || course.subtitle;
+    course.price = price || course.price;
+    course.platformFees = platformFees || course.platformFees;
+    course.category = category || course.category;
+    course.subCategory = subCategory || course.subCategory;
+    course.topic = topic || course.topic;
+    course.language = language || course.language;
+    course.level = level || course.level;
+    course.duration = duration || course.duration;
+    course.description = description || course.description;
+    course.teachingMaterials =
+      parsedTeachingMaterials || course.teachingMaterials;
+    course.targetAudience = parsedTargetAudience || course.targetAudience;
+    course.requirements = parsedRequirements || course.requirements;
+    course.welcomeMessage = welcomeMessage || course.welcomeMessage;
+    course.congratulationsMessage =
+      congratulationsMessage || course.congratulationsMessage;
+
+    if (req.files && req.files["image"]) {
+      let imageFileName = "";
+      if (req.files.image[0]) {
+        // Add public/uploads link to the image file
+        imageFileName = `public/uploads/images/${req.files.image[0].filename}`;
+        course.thumbnailImage = imageFileName;
+      }
+    }
+
+    if (req.files && req.files["videoFile"]) {
+      let videoFileName = "";
+      if (req.files.videoFile[0]) {
+        // Add public/uploads link to the video file
+        videoFileName = `public/uploads/videos/${req.files.videoFile[0].filename}`;
+        course.promoVideo = videoFileName;
+      }
+    }
+
+    await course.save();
     return res
       .status(HTTP_STATUS.OK)
-      .send(success("Successfully updated service", service));
+      .send(success("Successfully updated course", course));
   } catch (error) {
     return res
       .status(HTTP_STATUS.INTERNAL_SERVER_ERROR)
@@ -178,196 +248,136 @@ const getAllCourses = async (req, res) => {
   }
 };
 
-const getServiceById = async (req, res) => {
+const getCourseById = async (req, res) => {
   try {
     if (!req.params.id) {
       return res
         .status(HTTP_STATUS.NOT_FOUND)
-        .send(failure("Please provide service id"));
+        .send(failure("Please provide course id"));
     }
-    const service = await Course.findById(req.params.id);
-    if (!service) {
+    const course = await Course.findById(req.params.id);
+    if (!course) {
       return res
         .status(HTTP_STATUS.NOT_FOUND)
-        .send(failure("Service not found"));
+        .send(failure("course not found"));
     }
     return res
       .status(HTTP_STATUS.OK)
-      .send(success("Successfully received service", service));
+      .send(success("Successfully received course", course));
   } catch (error) {
     return res
       .status(HTTP_STATUS.INTERNAL_SERVER_ERROR)
-      .send(failure("Error fetching service", error.message));
+      .send(failure("Error fetching course", error.message));
   }
 };
 
-const getServiceByDoctorId = async (req, res) => {
+const getCourseByInstructorId = async (req, res) => {
   try {
     if (!req.params.id) {
       return res
         .status(HTTP_STATUS.NOT_FOUND)
         .send(failure("Please provide doctor id"));
     }
-    const service = await Course.find({ doctor: req.params.id });
-    if (!service) {
+    const course = await Course.find({ instructor: req.params.id });
+    if (!course) {
       return res
         .status(HTTP_STATUS.NOT_FOUND)
-        .send(failure("Service not found"));
+        .send(failure("course not found"));
     }
     return res
       .status(HTTP_STATUS.OK)
-      .send(success("Successfully received service", service));
+      .send(success("Successfully received course", course));
   } catch (error) {
     return res
       .status(HTTP_STATUS.INTERNAL_SERVER_ERROR)
-      .send(failure("Error fetching service", error.message));
+      .send(failure("Error fetching course", error.message));
   }
 };
 
-const deleteServiceById = async (req, res) => {
+const deleteCourseById = async (req, res) => {
   try {
     if (!req.params.id) {
       return res
         .status(HTTP_STATUS.NOT_FOUND)
-        .send(failure("Please provide service id"));
+        .send(failure("Please provide course id"));
     }
-    const service = await Course.findByIdAndUpdate(
+    const course = await Course.findByIdAndUpdate(
       req.params.id,
       { isDeleted: true },
       { new: true }
     );
-    if (!service) {
+    if (!course) {
       return res
         .status(HTTP_STATUS.NOT_FOUND)
-        .send(failure("Service not found"));
+        .send(failure("course not found"));
     }
     return res
       .status(HTTP_STATUS.OK)
-      .send(success("Successfully deleted service", service));
+      .send(success("Successfully deleted course", course));
   } catch (error) {
     return res
       .status(HTTP_STATUS.INTERNAL_SERVER_ERROR)
-      .send(failure("Error deleting service", error.message));
+      .send(failure("Error deleting course", error.message));
   }
 };
 
-const disableServiceById = async (req, res) => {
+const toggleEnableDisableCourse = async (req, res) => {
   try {
     if (!req.params.id) {
       return res
         .status(HTTP_STATUS.NOT_FOUND)
-        .send(failure("Please provide service id"));
+        .send(failure("Please provide course id"));
     }
-    const service = await Course.findByIdAndUpdate(
-      req.params.id,
-      { isDisabled: true },
-      { new: true }
-    );
-    if (!service) {
+    const course = await Course.findById(req.params.id);
+    if (!course) {
       return res
         .status(HTTP_STATUS.NOT_FOUND)
-        .send(failure("Service not found"));
+        .send(failure("course not found"));
     }
+    course.isDisabled = !course.isDisabled;
+    await course.save();
     return res
       .status(HTTP_STATUS.OK)
-      .send(success("Successfully disabled service", service));
+      .send(success("Successfully updated course", course));
   } catch (error) {
     return res
       .status(HTTP_STATUS.INTERNAL_SERVER_ERROR)
-      .send(failure("Error disabling service", error.message));
+      .send(failure("Error updating course", error.message));
   }
 };
 
-const enableServiceById = async (req, res) => {
+const toggleApproveCancelCourse = async (req, res) => {
   try {
     if (!req.params.id) {
       return res
         .status(HTTP_STATUS.NOT_FOUND)
-        .send(failure("Please provide service id"));
+        .send(failure("Please provide course id"));
     }
-    const service = await Course.findByIdAndUpdate(
-      req.params.id,
-      { isDisabled: false },
-      { new: true }
-    );
-    if (!service) {
+    const course = await Course.findById(req.params.id);
+    if (!course) {
       return res
         .status(HTTP_STATUS.NOT_FOUND)
-        .send(failure("Service not found"));
+        .send(failure("course not found"));
     }
+    course.status = course.status === "approved" ? "cancelled" : "approved";
+    await course.save();
     return res
       .status(HTTP_STATUS.OK)
-      .send(success("Successfully enabled service", service));
+      .send(success("Successfully updated course", course));
   } catch (error) {
     return res
       .status(HTTP_STATUS.INTERNAL_SERVER_ERROR)
-      .send(failure("Error enabling service", error.message));
-  }
-};
-
-const approveServiceById = async (req, res) => {
-  try {
-    if (!req.params.id) {
-      return res
-        .status(HTTP_STATUS.NOT_FOUND)
-        .send(failure("Please provide service id"));
-    }
-    const service = await Course.findByIdAndUpdate(
-      req.params.id,
-      { status: "approved" },
-      { new: true }
-    );
-    if (!service) {
-      return res
-        .status(HTTP_STATUS.NOT_FOUND)
-        .send(failure("Service not found"));
-    }
-    return res
-      .status(HTTP_STATUS.OK)
-      .send(success("Successfully approved service", service));
-  } catch (error) {
-    return res
-      .status(HTTP_STATUS.INTERNAL_SERVER_ERROR)
-      .send(failure("Error approving service", error.message));
-  }
-};
-
-const cancelServiceById = async (req, res) => {
-  try {
-    if (!req.params.id) {
-      return res
-        .status(HTTP_STATUS.NOT_FOUND)
-        .send(failure("Please provide service id"));
-    }
-    const service = await Course.findByIdAndUpdate(
-      req.params.id,
-      { status: "cancelled" },
-      { new: true }
-    );
-    if (!service) {
-      return res
-        .status(HTTP_STATUS.NOT_FOUND)
-        .send(failure("Service not found"));
-    }
-    return res
-      .status(HTTP_STATUS.OK)
-      .send(success("Successfully approved service", service));
-  } catch (error) {
-    return res
-      .status(HTTP_STATUS.INTERNAL_SERVER_ERROR)
-      .send(failure("Error approving service", error.message));
+      .send(failure("Error updating course", error.message));
   }
 };
 
 module.exports = {
   addCourse,
   getAllCourses,
-  getServiceById,
-  getServiceByDoctorId,
-  updateServiceById,
-  deleteServiceById,
-  disableServiceById,
-  enableServiceById,
-  approveServiceById,
-  cancelServiceById,
+  getCourseById,
+  getCourseByInstructorId,
+  updateCourseById,
+  deleteCourseById,
+  toggleEnableDisableCourse,
+  toggleApproveCancelCourse,
 };
