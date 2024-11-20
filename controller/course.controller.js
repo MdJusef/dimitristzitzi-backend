@@ -87,6 +87,8 @@ const addCourse = async (req, res) => {
       }
     }
 
+    await newCourse.save();
+
     instructor.uploadedCourses.push(newCourse._id);
     await instructor.save();
 
@@ -139,7 +141,7 @@ const updateServiceById = async (req, res) => {
   }
 };
 
-const getAllServices = async (req, res) => {
+const getAllCourses = async (req, res) => {
   try {
     let page = parseInt(req.query.page) || 1;
     let limit = parseInt(req.query.limit) || 10;
@@ -149,23 +151,20 @@ const getAllServices = async (req, res) => {
 
     const skip = (page - 1) * limit;
 
-    const services = await Course.find({ isDeleted: false })
-      .populate({
-        path: "doctor",
-        select: "-notifications -nhsNumber -balance -__v",
-      })
+    const courses = await Course.find({ isDeleted: false })
+
       .skip(skip)
       .limit(limit);
     const count = await Course.countDocuments({ isDeleted: false });
 
-    if (!services) {
+    if (!courses) {
       return res
         .status(HTTP_STATUS.NOT_FOUND)
         .send(failure("Services not found"));
     }
     return res.status(HTTP_STATUS.OK).send(
-      success("Successfully received all services", {
-        result: services,
+      success("Successfully received all courses", {
+        result: courses,
         count,
         page,
         limit,
@@ -362,7 +361,7 @@ const cancelServiceById = async (req, res) => {
 
 module.exports = {
   addCourse,
-  getAllServices,
+  getAllCourses,
   getServiceById,
   getServiceByDoctorId,
   updateServiceById,

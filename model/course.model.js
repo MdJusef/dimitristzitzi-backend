@@ -19,7 +19,7 @@ const courseSchema = new mongoose.Schema(
     description: { type: String, required: true },
     thumbnailImage: { type: String },
     promoVideo: { type: String },
-    topic: { type: String, required: true },
+    topic: { type: String, required: false },
     teachingMaterials: { type: [String], required: false },
     targetAudience: { type: [String], required: false },
     requirements: { type: [String], required: false },

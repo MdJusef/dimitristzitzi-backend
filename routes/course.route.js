@@ -2,7 +2,7 @@ const express = require("express");
 const routes = express();
 const {
   addCourse,
-  getAllServices,
+  getAllCourses,
   getServiceById,
   getServiceByDoctorId,
   updateServiceById,
@@ -21,7 +21,7 @@ const courseFileUpload = require("../middleware/courseFileUpload");
 
 routes.post("/add-course", isAuthorizedUser, courseFileUpload(), addCourse);
 
-routes.get("/get-all-services", getAllServices);
+routes.get("/get-all-courses", getAllCourses);
 
 routes.get(
   "/get-service-by-id/:id",
