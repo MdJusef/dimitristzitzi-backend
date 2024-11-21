@@ -23,6 +23,8 @@ const addCourse = async (req, res) => {
       requirements,
       welcomeMessage,
       congratulationsMessage,
+      sectionCount,
+      lectureCount,
     } = req.body;
 
     const instructor = await User.findById(req.user._id);
@@ -63,6 +65,8 @@ const addCourse = async (req, res) => {
       welcomeMessage,
       congratulationsMessage,
       instructor: instructor._id,
+      sectionCount,
+      lectureCount,
     });
 
     if (!newCourse) {
@@ -142,6 +146,8 @@ const updateCourseById = async (req, res) => {
       requirements,
       welcomeMessage,
       congratulationsMessage,
+      sectionCount,
+      lectureCount,
     } = req.body;
 
     const course = await Course.findById(req.params.id);
@@ -181,6 +187,8 @@ const updateCourseById = async (req, res) => {
     course.welcomeMessage = welcomeMessage || course.welcomeMessage;
     course.congratulationsMessage =
       congratulationsMessage || course.congratulationsMessage;
+    course.sectionCount = sectionCount || course.sectionCount;
+    course.lectureCount = lectureCount || course.lectureCount;
 
     if (req.files && req.files["image"]) {
       let imageFileName = "";
