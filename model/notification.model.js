@@ -5,17 +5,18 @@ const notificationSchema = new mongoose.Schema(
     applicant: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      required: false, // The user applying for the doctor role
     },
     admin: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      required: false, // The admin managing the application
     },
     course: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Course",
-      required: false,
+    },
+    lecture: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Lecture",
     },
     status: {
       type: String,
