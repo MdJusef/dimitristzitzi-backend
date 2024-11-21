@@ -37,6 +37,14 @@ const courseSchema = new mongoose.Schema(
       enum: ["pending", "approved", "cancelled"],
       default: "pending",
     },
+    sectionCount: { type: Number, default: 0 },
+    lectureCount: { type: Number, default: 0 },
+    sections: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Section",
+      },
+    ],
   },
   { timestamps: true }
 );
