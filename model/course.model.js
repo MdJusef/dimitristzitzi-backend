@@ -45,6 +45,20 @@ const courseSchema = new mongoose.Schema(
         ref: "Section",
       },
     ],
+    reviews: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Review",
+      },
+    ],
+    averageRating: { type: Number, default: 0 },
+    reviewCount: { type: Number, default: 0 },
+    enrolledStudents: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
   },
   { timestamps: true }
 );
