@@ -10,6 +10,7 @@ const {
   toggleEnableDisableCourse,
 
   toggleApproveCancelCourse,
+  getAllCategories,
 } = require("../controller/course.controller");
 const { userValidator, authValidator } = require("../middleware/validation");
 const {
@@ -42,5 +43,7 @@ routes.patch(
   isAuthorizedAdmin,
   toggleApproveCancelCourse
 );
+
+routes.get("/get-all-categories", getAllCategories);
 
 module.exports = routes;

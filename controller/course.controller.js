@@ -380,6 +380,24 @@ const toggleApproveCancelCourse = async (req, res) => {
   }
 };
 
+const getAllCategories = async (req, res) => {
+  try {
+    const categories = await Course.distinct("category");
+    if (!categories) {
+      return res
+        .status(HTTP_STATUS.NOT_FOUND)
+        .send(failure("Categories not found"));
+    }
+    return res
+      .status(HTTP_STATUS.OK)
+      .send(success("Successfully received all categories", categories));
+  } catch (error) {
+    return res
+      .status(HTTP_STATUS.INTERNAL_SERVER_ERROR)
+      .send(failure("Error fetching categories", error.message));
+  }
+};
+
 module.exports = {
   addCourse,
   getAllCourses,
@@ -389,4 +407,5 @@ module.exports = {
   deleteCourseById,
   toggleEnableDisableCourse,
   toggleApproveCancelCourse,
+  getAllCategories,
 };
