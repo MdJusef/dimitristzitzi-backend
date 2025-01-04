@@ -232,7 +232,8 @@ const getAllCourses = async (req, res) => {
     const courses = await Course.find({ isDeleted: false })
 
       .skip(skip)
-      .limit(limit);
+      .limit(limit)
+      .populate("instructor");
     const count = await Course.countDocuments({ isDeleted: false });
 
     if (!courses) {
