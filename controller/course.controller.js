@@ -264,7 +264,9 @@ const getCourseById = async (req, res) => {
         .status(HTTP_STATUS.NOT_FOUND)
         .send(failure("Please provide course id"));
     }
-    const course = await Course.findById(req.params.id);
+    const course = await Course.findById(req.params.id).populate(
+      "instructor reviews"
+    );
     if (!course) {
       return res
         .status(HTTP_STATUS.NOT_FOUND)
