@@ -264,9 +264,29 @@ const getCourseById = async (req, res) => {
         .status(HTTP_STATUS.NOT_FOUND)
         .send(failure("Please provide course id"));
     }
-    const course = await Course.findById(req.params.id).populate(
-      "instructor reviews"
-    );
+    // const course = await Course.findById(req.params.id).populate(
+    //   "instructor reviews sections"
+    // );
+    // const course = await Course.findById(req.params.id)
+    //   .populate("instructor reviews") // Populate instructor and reviews
+    //   .populate({
+    //     path: "reviews.user", // Populate user in the reviews
+    //     model: "User",
+    //   })
+    //   .catch((err) => {
+    //     console.error("Population Error:", err);
+    //   });
+    const course = await Course.findById(req.params.id)
+      .populate({
+        path: "reviews",
+        populate: {
+          path: "user", // Populate user in reviews
+          model: "User",
+          select:
+            "-notifications -password -__v -courses -reviews -createdAt -updatedAt -emailVerified -emailVerifyCode -isActive -isLocked -uploadedCourses -enrolledCourses",
+        },
+      })
+      .populate("instructor sections");
     if (!course) {
       return res
         .status(HTTP_STATUS.NOT_FOUND)

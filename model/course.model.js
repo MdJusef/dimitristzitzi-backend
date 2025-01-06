@@ -28,7 +28,7 @@ const courseSchema = new mongoose.Schema(
     teachingMaterials: { type: [String], required: false },
     targetAudience: { type: [String], required: false },
     requirements: { type: [String], required: false },
-    welcomeMessage: { type: String, required: true },
+    welcomeMessage: { type: String },
     congratulationsMessage: { type: String, required: true },
     isDisabled: { type: Boolean, default: false },
     isDeleted: { type: Boolean, default: false },
