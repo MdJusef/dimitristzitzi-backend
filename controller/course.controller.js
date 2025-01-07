@@ -264,6 +264,34 @@ const getAllCourses = async (req, res) => {
   }
 };
 
+const getAllCoursesByCategory = async (req, res) => {
+  try {
+    const courses = await Course.find({ isDeleted: false });
+
+    if (!courses || !courses.length) {
+      return res
+        .status(HTTP_STATUS.NOT_FOUND)
+        .send(failure("courses not found"));
+    }
+
+    const coursesByCategory = {};
+    courses.forEach((course) => {
+      if (!coursesByCategory[course.category]) {
+        coursesByCategory[course.category] = [];
+      }
+      coursesByCategory[course.category].push(course);
+    });
+
+    return res
+      .status(HTTP_STATUS.OK)
+      .send(success("Successfully received all courses", coursesByCategory));
+  } catch (error) {
+    return res
+      .status(HTTP_STATUS.INTERNAL_SERVER_ERROR)
+      .send(failure("Error fetching courses", error.message));
+  }
+};
+
 const getCourseById = async (req, res) => {
   try {
     if (!req.params.id) {
@@ -438,6 +466,7 @@ const getAllCategories = async (req, res) => {
 module.exports = {
   addCourse,
   getAllCourses,
+  getAllCoursesByCategory,
   getCourseById,
   getCourseByInstructorId,
   updateCourseById,

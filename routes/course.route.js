@@ -8,7 +8,7 @@ const {
   updateCourseById,
   deleteCourseById,
   toggleEnableDisableCourse,
-
+  getAllCoursesByCategory,
   toggleApproveCancelCourse,
   getAllCategories,
 } = require("../controller/course.controller");
@@ -22,6 +22,7 @@ const courseFileUpload = require("../middleware/courseFileUpload");
 routes.post("/add-course", isAuthorizedUser, courseFileUpload(), addCourse);
 
 routes.get("/get-all-courses", getAllCourses);
+routes.get("/get-all-courses-by-category", getAllCoursesByCategory);
 
 routes.get("/get-course-by-id/:id", getCourseById);
 
