@@ -404,15 +404,20 @@ const toggleApproveCancelCourse = async (req, res) => {
 
 const getAllCategories = async (req, res) => {
   try {
-    const categories = await Course.distinct("category");
+    const categories = await Course.aggregate([
+      { $group: { _id: "$category", count: { $sum: 1 } } },
+    ]);
     if (!categories) {
       return res
         .status(HTTP_STATUS.NOT_FOUND)
         .send(failure("Categories not found"));
     }
-    return res
-      .status(HTTP_STATUS.OK)
-      .send(success("Successfully received all categories", categories));
+    return res.status(HTTP_STATUS.OK).send(
+      success("Successfully received all categories with their courses count", {
+        categories,
+        count: categories.length,
+      })
+    );
   } catch (error) {
     return res
       .status(HTTP_STATUS.INTERNAL_SERVER_ERROR)
