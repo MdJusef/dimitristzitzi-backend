@@ -414,7 +414,10 @@ const getAllCategories = async (req, res) => {
     }
     return res.status(HTTP_STATUS.OK).send(
       success("Successfully received all categories with their courses count", {
-        categories,
+        categories: categories.map((category) => ({
+          courseCategory: category._id,
+          count: category.count,
+        })),
         count: categories.length,
       })
     );
