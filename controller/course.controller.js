@@ -223,23 +223,30 @@ const getAllCourses = async (req, res) => {
   try {
     let page = parseInt(req.query.page) || 1;
     let limit = parseInt(req.query.limit) || 10;
+    const category = req.query.category; // Get the category from the query parameters
 
     if (page < 1) page = 1;
     if (limit < 1) limit = 10;
 
     const skip = (page - 1) * limit;
 
-    const courses = await Course.find({ isDeleted: false })
+    // Construct the query object
+    const query = { isDeleted: false };
+    if (category) {
+      query.category = category; // Add category filter if category is provided
+    }
+
+    const courses = await Course.find(query)
 
       .skip(skip)
       .limit(limit)
       .populate("instructor");
-    const count = await Course.countDocuments({ isDeleted: false });
+    const count = await Course.countDocuments(query);
 
-    if (!courses) {
+    if (!courses || !courses.length) {
       return res
         .status(HTTP_STATUS.NOT_FOUND)
-        .send(failure("Services not found"));
+        .send(failure("courses not found"));
     }
     return res.status(HTTP_STATUS.OK).send(
       success("Successfully received all courses", {
@@ -253,7 +260,7 @@ const getAllCourses = async (req, res) => {
   } catch (error) {
     return res
       .status(HTTP_STATUS.INTERNAL_SERVER_ERROR)
-      .send(failure("Error fetching services", error.message));
+      .send(failure("Error fetching courses", error.message));
   }
 };
 
