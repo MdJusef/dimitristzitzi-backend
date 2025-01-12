@@ -67,7 +67,7 @@ const getOneUserById = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const user = await UserModel.find({ _id: id });
+    const user = await UserModel.find({ _id: id }).populate("uploadedCourses");
     if (!user.length) {
       return res
         .status(HTTP_STATUS.NOT_FOUND)
