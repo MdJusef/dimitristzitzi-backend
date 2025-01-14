@@ -224,6 +224,7 @@ const getAllCourses = async (req, res) => {
     let page = parseInt(req.query.page) || 1;
     let limit = parseInt(req.query.limit) || 10;
     const category = req.query.category; // Get the category from the query parameters
+    const search = req.query.search; // Get the search string from the query parameters
 
     if (page < 1) page = 1;
     if (limit < 1) limit = 10;
@@ -234,6 +235,13 @@ const getAllCourses = async (req, res) => {
     const query = { isDeleted: false };
     if (category) {
       query.category = category; // Add category filter if category is provided
+    }
+
+    if (search) {
+      query.$or = [
+        { title: { $regex: search, $options: "i" } },
+        { subtitle: { $regex: search, $options: "i" } },
+      ];
     }
 
     const courses = await Course.find(query)
