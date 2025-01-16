@@ -89,7 +89,9 @@ const profile = async (req, res) => {
         .status(HTTP_STATUS.NOT_FOUND)
         .send(failure("User not logged in"));
     }
-    const user = await UserModel.findById(req.user._id).select("-password");
+    const user = await UserModel.findById(req.user._id)
+      .select("-password")
+      .populate("enrolledCourses");
     if (!user) {
       return res
         .status(HTTP_STATUS.NOT_FOUND)
