@@ -329,7 +329,16 @@ const getCourseById = async (req, res) => {
             "-notifications -password -__v -courses -reviews -createdAt -updatedAt -emailVerified -emailVerifyCode -isActive -isLocked -uploadedCourses -enrolledCourses",
         },
       })
-      .populate("instructor sections");
+      .populate({
+        path: "sections",
+        populate: {
+          path: "lectures", // Populate user in reviews
+          model: "Lecture",
+          select:
+            "-notifications -password -__v -courses -reviews -createdAt -updatedAt -emailVerified -emailVerifyCode -isActive -isLocked -uploadedCourses -enrolledCourses",
+        },
+      })
+      .populate("instructor");
     if (!course) {
       return res
         .status(HTTP_STATUS.NOT_FOUND)
