@@ -91,7 +91,7 @@ const profile = async (req, res) => {
     }
     const user = await UserModel.findById(req.user._id)
       .select("-password")
-      .populate("enrolledCourses");
+      .populate("enrolledCourses uploadedCourses");
     if (!user) {
       return res
         .status(HTTP_STATUS.NOT_FOUND)
