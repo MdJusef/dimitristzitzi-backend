@@ -57,7 +57,41 @@ const getAllNotifications = async (req, res) => {
   }
 };
 
+const readNotification = async (req, res) => {
+  try {
+    const { notificationId } = req.params;
+
+    if (!notificationId) {
+      return res
+        .status(HTTP_STATUS.BAD_REQUEST)
+        .send(failure("Please provide notificationId"));
+    }
+
+    // Fetch the notification to check if it exists
+    const notification = await Notification.findById(notificationId);
+    console.log(notification, "notification");
+    if (!notification || notification === null) {
+      return res
+        .status(HTTP_STATUS.NOT_FOUND)
+        .send(failure("Notification does not exist"));
+    }
+
+    // Update the notification to read
+    notification.isRead = true;
+    await notification.save();
+
+    res.status(HTTP_STATUS.OK).send({
+      message: "Notification read successfully",
+      notification: notification,
+    });
+  } catch (error) {
+    console.error("error", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
 module.exports = {
   getNotificationsByUserId,
+  readNotification,
   getAllNotifications,
 };
