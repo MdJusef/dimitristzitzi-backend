@@ -359,21 +359,242 @@ const getCourseByInstructorId = async (req, res) => {
     if (!req.params.id) {
       return res
         .status(HTTP_STATUS.NOT_FOUND)
-        .send(failure("Please provide doctor id"));
+        .send(failure("Please provide instructor id"));
     }
-    const course = await Course.find({ instructor: req.params.id });
-    if (!course) {
+    const courses = await Course.find({ instructor: req.params.id }).populate(
+      "reviews"
+    );
+    if (!courses || !courses.length) {
       return res
         .status(HTTP_STATUS.NOT_FOUND)
-        .send(failure("course not found"));
+        .send(failure("courses not found"));
     }
-    return res
-      .status(HTTP_STATUS.OK)
-      .send(success("Successfully received course", course));
+
+    const totalCourses = courses.length;
+    const coursesWithEnrolledStudents = courses.filter(
+      (course) => course.enrolledStudents && course.enrolledStudents.length > 0
+    ).length;
+    const totalEnrolledStudents = courses.reduce(
+      (sum, course) =>
+        sum + (course.enrolledStudents ? course.enrolledStudents.length : 0),
+      0
+    );
+
+    let totalRatings = 0;
+    let totalRatingCount = 0;
+    const ratingCounts = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+
+    courses.forEach((course) => {
+      if (course.reviews && course.reviews.length > 0) {
+        course.reviews.forEach((review) => {
+          totalRatings += review.rating;
+          totalRatingCount++;
+          ratingCounts[review.rating]++;
+        });
+      }
+    });
+
+    const averageRating = totalRatingCount
+      ? (totalRatings / totalRatingCount).toFixed(2)
+      : 0;
+
+    const ratingPercentages = {};
+    for (const [star, count] of Object.entries(ratingCounts)) {
+      ratingPercentages[star] = totalRatingCount
+        ? ((count / totalRatingCount) * 100).toFixed(2)
+        : 0;
+    }
+
+    return res.status(HTTP_STATUS.OK).send(
+      success("Successfully received courses", {
+        courses,
+        totalCourses,
+        coursesWithEnrolledStudents,
+        totalEnrolledStudents,
+        averageRating,
+        ratingPercentages,
+      })
+    );
   } catch (error) {
     return res
       .status(HTTP_STATUS.INTERNAL_SERVER_ERROR)
-      .send(failure("Error fetching course", error.message));
+      .send(failure("Error fetching courses", error.message));
+  }
+};
+
+// const getUserCourseTransactionStatistcs = async (req, res) => {
+//   try {
+//     if (!req.params.id) {
+//       return res
+//         .status(HTTP_STATUS.NOT_FOUND)
+//         .send(failure("Please provide user id"));
+//     }
+//     const userId = req.params.id;
+//     const { filter } = req.query;
+//     // Get the current date
+//     const currentDate = new Date();
+
+//     // Define filter logic
+//     let filterCondition = {};
+//     if (filter === "weekly") {
+//       const oneWeekAgo = new Date();
+//       oneWeekAgo.setDate(currentDate.getDate() - 7);
+//       filterCondition = { createdAt: { $gte: oneWeekAgo } };
+//     } else if (filter === "monthly") {
+//       const oneMonthAgo = new Date();
+//       oneMonthAgo.setMonth(currentDate.getMonth() - 1);
+//       filterCondition = { createdAt: { $gte: oneMonthAgo } };
+//     } else if (filter === "yearly") {
+//       const oneYearAgo = new Date();
+//       oneYearAgo.setFullYear(currentDate.getFullYear() - 1);
+//       filterCondition = { createdAt: { $gte: oneYearAgo } };
+//     }
+
+//     // Find the user and their uploaded courses
+//     const user = await User.findById(userId).populate({
+//       path: "uploadedCourses",
+//       match: filterCondition, // Apply the filter condition
+//     });
+
+//     if (!user) {
+//       return res.status(HTTP_STATUS.NOT_FOUND).send(failure("User not found"));
+//     }
+
+//     const uploadedCourses = user.uploadedCourses;
+
+//     // Calculate total enrolled students and total sales amount
+//     let totalEnrolledStudents = 0;
+//     let totalSalesAmount = 0;
+
+//     uploadedCourses.forEach((course) => {
+//       const enrolledCount = course.enrolledStudents.length;
+//       totalEnrolledStudents += enrolledCount;
+//       totalSalesAmount += enrolledCount * course.price;
+//     });
+
+//     return res.status(200).send(
+//       success("Successfully retrieved user course statistics", {
+//         totalEnrolledStudents,
+//         totalSalesAmount,
+//         uploadedCoursesCount: uploadedCourses.length,
+//       })
+//     );
+//   } catch (error) {
+//     return res
+//       .status(HTTP_STATUS.INTERNAL_SERVER_ERROR)
+//       .send(failure("Error fetching user course statistics", error.message));
+//   }
+// };
+
+const getUserCourseTransactionStatistcs = async (req, res) => {
+  try {
+    if (!req.params.id) {
+      return res
+        .status(HTTP_STATUS.NOT_FOUND)
+        .send(failure("Please provide user id"));
+    }
+    const userId = req.params.id;
+    const { filter } = req.query; // Query parameter for filtering (e.g., "weekly", "monthly", "yearly")
+
+    const currentDate = new Date();
+
+    // Find the user and their uploaded courses
+    const user = await User.findById(userId).populate("uploadedCourses");
+
+    if (!user) {
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found" });
+    }
+
+    const uploadedCourses = user.uploadedCourses;
+
+    // Helper function to calculate total sales for a specific date range
+    const calculateSales = (startDate, endDate) => {
+      let totalSales = 0;
+
+      uploadedCourses.forEach((course) => {
+        course.enrolledStudents.forEach((enrollmentDate) => {
+          const enrolledDate = new Date(enrollmentDate);
+          if (enrolledDate >= startDate && enrolledDate <= endDate) {
+            totalSales += course.price;
+          }
+        });
+      });
+
+      return totalSales;
+    };
+
+    let responseData = [];
+
+    if (filter === "weekly") {
+      // Get the start of the current week
+      const startOfWeek = new Date(currentDate);
+      startOfWeek.setDate(currentDate.getDate() - currentDate.getDay()); // Sunday is the start of the week
+
+      for (let i = 0; i < 7; i++) {
+        const dayStart = new Date(startOfWeek);
+        dayStart.setDate(startOfWeek.getDate() + i);
+
+        const dayEnd = new Date(dayStart);
+        dayEnd.setHours(23, 59, 59, 999);
+
+        responseData.push({
+          day: dayStart.toLocaleDateString(),
+          totalSalesAmount: calculateSales(dayStart, dayEnd),
+        });
+      }
+    } else if (filter === "monthly") {
+      // Get the start of the current month
+      const startOfMonth = new Date(
+        currentDate.getFullYear(),
+        currentDate.getMonth(),
+        1
+      );
+      const daysInMonth = new Date(
+        currentDate.getFullYear(),
+        currentDate.getMonth() + 1,
+        0
+      ).getDate();
+
+      for (let i = 1; i <= daysInMonth; i++) {
+        const dayStart = new Date(
+          currentDate.getFullYear(),
+          currentDate.getMonth(),
+          i
+        );
+        const dayEnd = new Date(dayStart);
+        dayEnd.setHours(23, 59, 59, 999);
+
+        responseData.push({
+          day: dayStart.toLocaleDateString(),
+          totalSalesAmount: calculateSales(dayStart, dayEnd),
+        });
+      }
+    } else if (filter === "yearly") {
+      // Get the start of the current year
+      const startOfYear = new Date(currentDate.getFullYear(), 0, 1);
+
+      for (let i = 0; i < 12; i++) {
+        const monthStart = new Date(currentDate.getFullYear(), i, 1);
+        const monthEnd = new Date(currentDate.getFullYear(), i + 1, 0); // Last day of the month
+
+        responseData.push({
+          month: monthStart.toLocaleString("default", { month: "long" }),
+          totalSalesAmount: calculateSales(monthStart, monthEnd),
+        });
+      }
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Successfully retrieved user course statistics",
+      filter,
+      data: responseData,
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ success: false, message: "Server error" });
   }
 };
 
@@ -486,6 +707,7 @@ module.exports = {
   getAllCoursesByCategory,
   getCourseById,
   getCourseByInstructorId,
+  getUserCourseTransactionStatistcs,
   updateCourseById,
   deleteCourseById,
   toggleEnableDisableCourse,
