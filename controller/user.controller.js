@@ -6,13 +6,39 @@ const Notification = require("../model/notification.model");
 
 const getAllUsers = async (req, res) => {
   try {
-    const user = await UserModel.find({}).select("-__v");
+    let { search, page, limit } = req.query;
+    page = parseInt(page, 10) || 1;
+    limit = parseInt(limit, 10) || 10;
 
-    // console.log(transaction[0].products);
-    if (user) {
+    if (page < 1 || limit < 0) {
+      return res
+        .status(HTTP_STATUS.UNPROCESSABLE_ENTITY)
+        .send(failure("Page and limit values must be at least 1"));
+    }
+    page = parseInt(page) || 1;
+    limit = parseInt(limit) || 10;
+
+    const query = {};
+    if (search) {
+      query.$or = [
+        { name: { $regex: search, $options: "i" } },
+        { role: { $regex: search, $options: "i" } },
+        { email: { $regex: search, $options: "i" } },
+      ];
+    }
+    const users = await UserModel.find(query)
+      .select("-__v")
+      .skip((page - 1) * limit)
+      .limit(limit * 1);
+    const total = await UserModel.countDocuments(query);
+    if (users.length) {
       return res.status(HTTP_STATUS.OK).send(
         success("Successfully received all users", {
-          result: user,
+          result: users,
+          page,
+          limit,
+          total,
+          totalPages: Math.ceil(total / limit),
         })
       );
     } else {
