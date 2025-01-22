@@ -5,6 +5,11 @@ const {
   getPaymentIntent,
   getAllPaymentIntents,
   confirmPaymentbyPaymentIntent,
+  getAllTransactions,
+  getTransactionByUserId,
+  saveCard,
+  confirmPaymentUsingSavedCard,
+  getUserCourseTransactions,
 } = require("../controller/payment.controller");
 const {
   isAuthorizedUser,
@@ -19,5 +24,13 @@ routes.post(
 );
 routes.post("/get-payment-intent", getPaymentIntent);
 routes.get("/get-all-payment-intents", isAuthorizedAdmin, getAllPaymentIntents);
+
+routes.get("/get-all-transactions", getAllTransactions);
+routes.get("/get-transaction-by-user-id/:userId", getTransactionByUserId);
+
+routes.get("/get-user-course-transactions/:userId", getUserCourseTransactions);
+
+routes.post("/save-card", saveCard);
+routes.post("/confirm-payment-using-saved-card", confirmPaymentUsingSavedCard);
 
 module.exports = routes;
