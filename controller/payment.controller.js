@@ -316,15 +316,44 @@ const getTransactionByUserId = async (req, res) => {
 
 const getAllTransactions = async (req, res) => {
   try {
-    const transactions = await Transaction.find().populate("user");
+    const { period } = req.query;
+    const periods = {
+      weekly: {
+        $gte: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
+        $lte: new Date(),
+      },
+      monthly: {
+        $gte: new Date(new Date().getFullYear(), new Date().getMonth(), 1),
+        $lte: new Date(),
+      },
+      yearly: {
+        $gte: new Date(new Date().getFullYear(), 0, 1),
+        $lte: new Date(),
+      },
+    };
+    const transactionQuery = {};
+    if (period && Object.keys(periods).includes(period)) {
+      transactionQuery.date = periods[period];
+    } else {
+      transactionQuery.date = periods.monthly;
+    }
+
+    const transactions = await Transaction.find(transactionQuery).populate(
+      "user",
+      "name email image -_id"
+    );
+    const count = await Transaction.countDocuments(transactionQuery);
     if (!transactions) {
       return res
         .status(HTTP_STATUS.NOT_FOUND)
         .send(failure("Transactions not found"));
     }
-    return res
-      .status(HTTP_STATUS.OK)
-      .send(success("Transactions retrieved successfully", transactions));
+    return res.status(HTTP_STATUS.OK).send(
+      success("Transactions retrieved successfully", {
+        transactions,
+        count,
+      })
+    );
   } catch (err) {
     console.error(err);
     return res
