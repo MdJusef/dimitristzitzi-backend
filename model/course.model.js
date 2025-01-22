@@ -1,3 +1,4 @@
+const { required } = require("joi");
 const mongoose = require("mongoose");
 
 const courseSchema = new mongoose.Schema(
@@ -8,26 +9,26 @@ const courseSchema = new mongoose.Schema(
       required: true,
     },
     title: { type: String, required: true },
-    subtitle: { type: String, required: true },
+    subtitle: { type: String },
     price: { type: Number, required: true },
     platformFees: { type: Number, required: true },
     category: { type: String, required: true },
-    subCategory: { type: String, required: true },
+    subCategory: { type: String },
 
-    language: { type: String, required: true },
+    language: { type: String },
     level: {
       type: String,
       enum: ["beginner", "intermediate", "advanced"],
-      required: true,
     },
-    duration: { type: String, required: true },
+    duration: { type: String },
     description: { type: String, required: true },
     thumbnailImage: { type: String },
     promoVideo: { type: String },
-    topic: { type: String, required: false },
-    teachingMaterials: { type: [String], required: false },
-    targetAudience: { type: [String], required: false },
-    requirements: { type: [String], required: false },
+    promoVideoURL: { type: String },
+    topic: { type: String },
+    teachingMaterials: { type: [String] },
+    targetAudience: { type: [String] },
+    requirements: { type: [String] },
     welcomeMessage: { type: String },
     congratulationsMessage: { type: String, required: true },
     isDisabled: { type: Boolean, default: false },

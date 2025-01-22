@@ -25,6 +25,7 @@ const addCourse = async (req, res) => {
       congratulationsMessage,
       sectionCount,
       lectureCount,
+      promoVideoURL,
     } = req.body;
 
     const instructor = await User.findById(req.user._id);
@@ -67,6 +68,7 @@ const addCourse = async (req, res) => {
       instructor: instructor._id,
       sectionCount,
       lectureCount,
+      promoVideoURL,
     });
 
     if (!newCourse) {
