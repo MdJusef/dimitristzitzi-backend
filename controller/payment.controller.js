@@ -197,10 +197,10 @@ const getUserCourseTransactions = async (req, res) => {
         .json({ success: false, message: "User not found" });
     }
 
-    // const uploadedCourseIds = user.uploadedCourses;
-    const uploadedCourseIds = [
-      new mongoose.Types.ObjectId("6778cff579a63bc07b38f7e7"),
-    ];
+    const uploadedCourseIds = user.uploadedCourses;
+    // const uploadedCourseIds = [
+    //   new mongoose.Types.ObjectId("6778cff579a63bc07b38f7e7"),
+    // ];
 
     if (!uploadedCourseIds.length) {
       return res.status(200).json({
