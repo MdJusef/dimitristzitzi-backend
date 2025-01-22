@@ -325,8 +325,6 @@ const getAllTransactions = async (req, res) => {
   }
 };
 
-// const getAllTransactionsByInstructorId = async();
-
 const saveCard = async (req, res) => {
   try {
     const { email, token } = req.body;
