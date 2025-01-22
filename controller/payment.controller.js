@@ -316,7 +316,7 @@ const getTransactionByUserId = async (req, res) => {
 
 const getAllTransactions = async (req, res) => {
   try {
-    const transactions = await Transaction.find();
+    const transactions = await Transaction.find().populate("user");
     if (!transactions) {
       return res
         .status(HTTP_STATUS.NOT_FOUND)
