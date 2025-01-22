@@ -197,16 +197,17 @@ const getUserCourseTransactions = async (req, res) => {
         .json({ success: false, message: "User not found" });
     }
 
-    const uploadedCourseIds = user.uploadedCourses;
-    // const uploadedCourseIds = [
-    //   new mongoose.Types.ObjectId("6778cff579a63bc07b38f7e7"),
-    // ];
+    // const uploadedCourseIds = user.uploadedCourses;
+    const uploadedCourseIds = [
+      new mongoose.Types.ObjectId("6778cff579a63bc07b38f7e7"),
+    ];
 
     if (!uploadedCourseIds.length) {
       return res.status(200).json({
         success: true,
         message: "No uploaded courses found for this user.",
         transactions: [],
+        totalAmount: 0,
       });
     }
 
@@ -224,6 +225,7 @@ const getUserCourseTransactions = async (req, res) => {
         success: true,
         message: "No transactions found for the uploaded courses.",
         transactions: [],
+        totalAmount: 0,
       });
     }
 
@@ -262,10 +264,16 @@ const getUserCourseTransactions = async (req, res) => {
       })
     );
 
+    const totalAmount = formattedTransactions.reduce(
+      (acc, curr) => acc + curr.amount,
+      0
+    );
+
     return res.status(200).json({
       success: true,
       message: "Successfully retrieved course transactions.",
       transactions: formattedTransactions,
+      totalAmount,
     });
   } catch (error) {
     console.error(error);
