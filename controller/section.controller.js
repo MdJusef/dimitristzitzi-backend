@@ -142,7 +142,10 @@ const getAllSections = async (req, res) => {
         .send(failure("Course ID is required"));
     }
 
-    const sections = await Section.find({ course: courseId, isDeleted: false });
+    const sections = await Section.find({
+      course: courseId,
+      isDeleted: false,
+    }).populate("lectures");
 
     const count = await Section.countDocuments({
       course: courseId,
