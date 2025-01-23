@@ -13,8 +13,15 @@ const addLecture = async (req, res) => {
         .status(HTTP_STATUS.UNAUTHORIZED)
         .send(failure("Unauthorized! Pleaase login"));
     }
-    const { courseId, sectionId, title, duration, description, position } =
-      req.body;
+    const {
+      courseId,
+      sectionId,
+      title,
+      duration,
+      description,
+      position,
+      videoLink,
+    } = req.body;
     if (!courseId || !sectionId || !title || !duration) {
       return res
         .status(HTTP_STATUS.BAD_REQUEST)
@@ -53,6 +60,7 @@ const addLecture = async (req, res) => {
       duration,
       description,
       position,
+      videoLink,
       course: existingCourse._id,
       section: existingSection._id,
     });

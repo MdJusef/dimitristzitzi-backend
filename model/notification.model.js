@@ -14,6 +14,10 @@ const notificationSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Course",
     },
+    webinar: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Webinar",
+    },
     lecture: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Lecture",

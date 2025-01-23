@@ -74,6 +74,7 @@ const userSchema = new mongoose.Schema(
     reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "Review" }],
     uploadedCourses: [{ type: mongoose.Schema.Types.ObjectId, ref: "Course" }],
     enrolledCourses: [{ type: mongoose.Schema.Types.ObjectId, ref: "Course" }],
+    webinars: [{ type: mongoose.Schema.Types.ObjectId, ref: "Webinar" }],
   },
   { timestamps: true }
 );
