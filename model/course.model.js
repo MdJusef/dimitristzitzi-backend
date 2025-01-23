@@ -22,7 +22,7 @@ const courseSchema = new mongoose.Schema(
     },
     duration: { type: String },
     description: { type: String, required: true },
-    thumbnailImage: { type: String },
+    thumbnailImage: { type: String, required: true },
     promoVideo: { type: String },
     promoVideoURL: { type: String },
     topic: { type: String },
