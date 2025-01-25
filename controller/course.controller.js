@@ -3,6 +3,7 @@ const HTTP_STATUS = require("../constants/statusCodes");
 const Course = require("../model/course.model");
 const User = require("../model/user.model");
 const Notification = require("../model/notification.model");
+const Transaction = require("../model/transaction.model");
 
 const addCourse = async (req, res) => {
   try {
@@ -78,6 +79,8 @@ const addCourse = async (req, res) => {
     }
 
     if (req.files && req.files["image"]) {
+      console.log("req.files", req.files);
+      console.log("req.files[image]", req.files["image"]);
       let imageFileName = "";
       if (req.files.image[0]) {
         // Add public/uploads link to the image file
@@ -488,115 +491,237 @@ const getCourseByInstructorId = async (req, res) => {
 //   }
 // };
 
-const getUserCourseTransactionStatistcs = async (req, res) => {
+// const getUserCourseTransactionStatistcs = async (req, res) => {
+//   try {
+//     if (!req.params.id) {
+//       return res
+//         .status(HTTP_STATUS.NOT_FOUND)
+//         .send(failure("Please provide user id"));
+//     }
+//     const userId = req.params.id;
+//     const { filter } = req.query; // Query parameter for filtering (e.g., "weekly", "monthly", "yearly")
+
+//     const currentDate = new Date();
+
+//     // Find the user and their uploaded courses
+//     const user = await User.findById(userId).populate({
+//       path: "uploadedCourses",
+//       populate: {
+//         path: "enrolledStudents",
+//         model: "User",
+//         select:
+//           "-password -__v -courses -reviews -createdAt -updatedAt -emailVerified -emailVerifyCode -isActive -isLocked -uploadedCourses -enrolledCourses",
+//       },
+//     });
+
+//     if (!user) {
+//       return res
+//         .status(404)
+//         .json({ success: false, message: "User not found" });
+//     }
+
+//     const uploadedCourses = user.uploadedCourses;
+//     console.log("uploadedCourses", uploadedCourses);
+
+//     // Helper function to calculate total sales for a specific date range
+//     const calculateSales = (startDate, endDate) => {
+//       let totalSales = 0;
+
+//       uploadedCourses.forEach((course) => {
+//         course.enrolledStudents.forEach((enrollmentDate) => {
+//           const enrolledDate = new Date(enrollmentDate);
+//           if (enrolledDate >= startDate && enrolledDate <= endDate) {
+//             totalSales += course.price;
+//           }
+//         });
+//       });
+
+//       return totalSales;
+//     };
+
+//     let responseData = [];
+
+//     if (filter === "weekly") {
+//       // Get the start of the current week
+//       const startOfWeek = new Date(currentDate);
+//       startOfWeek.setDate(currentDate.getDate() - currentDate.getDay()); // Sunday is the start of the week
+
+//       for (let i = 0; i < 7; i++) {
+//         const dayStart = new Date(startOfWeek);
+//         dayStart.setDate(startOfWeek.getDate() + i);
+
+//         const dayEnd = new Date(dayStart);
+//         dayEnd.setHours(23, 59, 59, 999);
+
+//         responseData.push({
+//           day: dayStart.toLocaleDateString(),
+//           totalSalesAmount: calculateSales(dayStart, dayEnd),
+//         });
+//       }
+//     } else if (filter === "monthly") {
+//       // Get the start of the current month
+//       const startOfMonth = new Date(
+//         currentDate.getFullYear(),
+//         currentDate.getMonth(),
+//         1
+//       );
+//       const daysInMonth = new Date(
+//         currentDate.getFullYear(),
+//         currentDate.getMonth() + 1,
+//         0
+//       ).getDate();
+
+//       for (let i = 1; i <= daysInMonth; i++) {
+//         const dayStart = new Date(
+//           currentDate.getFullYear(),
+//           currentDate.getMonth(),
+//           i
+//         );
+//         const dayEnd = new Date(dayStart);
+//         dayEnd.setHours(23, 59, 59, 999);
+
+//         responseData.push({
+//           day: dayStart.toLocaleDateString(),
+//           totalSalesAmount: calculateSales(dayStart, dayEnd),
+//         });
+//       }
+//     } else if (filter === "yearly") {
+//       // Get the start of the current year
+//       const startOfYear = new Date(currentDate.getFullYear(), 0, 1);
+
+//       for (let i = 0; i < 12; i++) {
+//         const monthStart = new Date(currentDate.getFullYear(), i, 1);
+//         const monthEnd = new Date(currentDate.getFullYear(), i + 1, 0); // Last day of the month
+
+//         responseData.push({
+//           month: monthStart.toLocaleString("default", { month: "long" }),
+//           totalSalesAmount: calculateSales(monthStart, monthEnd),
+//         });
+//       }
+//     }
+
+//     return res.status(200).json({
+//       success: true,
+//       message: "Successfully retrieved user course statistics",
+//       filter,
+//       data: responseData,
+//     });
+//   } catch (error) {
+//     console.error(error);
+//     return res.status(500).json({ success: false, message: "Server error" });
+//   }
+// };
+
+const getInstructorTransactions = async (req, res) => {
   try {
-    if (!req.params.id) {
-      return res
-        .status(HTTP_STATUS.NOT_FOUND)
-        .send(failure("Please provide user id"));
-    }
-    const userId = req.params.id;
-    const { filter } = req.query; // Query parameter for filtering (e.g., "weekly", "monthly", "yearly")
+    const { instructorId } = req.params;
+    const { period = "monthly" } = req.query;
 
-    const currentDate = new Date();
-
-    // Find the user and their uploaded courses
-    const user = await User.findById(userId).populate("uploadedCourses");
-
-    if (!user) {
+    const instructor = await User.findById(instructorId);
+    if (!instructor || !instructor.isInstructor) {
       return res
         .status(404)
-        .json({ success: false, message: "User not found" });
+        .json({ success: false, message: "Instructor not found" });
     }
 
-    const uploadedCourses = user.uploadedCourses;
-
-    // Helper function to calculate total sales for a specific date range
-    const calculateSales = (startDate, endDate) => {
-      let totalSales = 0;
-
-      uploadedCourses.forEach((course) => {
-        course.enrolledStudents.forEach((enrollmentDate) => {
-          const enrolledDate = new Date(enrollmentDate);
-          if (enrolledDate >= startDate && enrolledDate <= endDate) {
-            totalSales += course.price;
-          }
-        });
+    const courses = await Course.find({ instructor: instructorId }).populate(
+      "enrolledStudents",
+      "_id"
+    );
+    if (!courses || courses.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "No courses found for this instructor",
       });
+    }
 
-      return totalSales;
-    };
+    const courseIds = courses.map((course) => course._id);
+    const enrolledStudentIds = courses.flatMap((course) =>
+      course.enrolledStudents.map((student) => student._id)
+    );
 
-    let responseData = [];
+    const startDate = new Date();
+    const endDate = new Date();
+    let format = "monthly";
 
-    if (filter === "weekly") {
-      // Get the start of the current week
-      const startOfWeek = new Date(currentDate);
-      startOfWeek.setDate(currentDate.getDate() - currentDate.getDay()); // Sunday is the start of the week
+    if (period === "weekly") {
+      startDate.setDate(startDate.getDate() - 7);
+      format = "weekly";
+    } else if (period === "yearly") {
+      startDate.setFullYear(startDate.getFullYear() - 1);
+      format = "yearly";
+    } else {
+      startDate.setMonth(startDate.getMonth() - 1);
+    }
 
-      for (let i = 0; i < 7; i++) {
-        const dayStart = new Date(startOfWeek);
-        dayStart.setDate(startOfWeek.getDate() + i);
+    const transactions = await Transaction.find({
+      course: { $in: courseIds },
+      user: { $in: enrolledStudentIds },
+      date: { $gte: startDate, $lte: endDate },
+      status: "paid",
+    });
 
-        const dayEnd = new Date(dayStart);
-        dayEnd.setHours(23, 59, 59, 999);
+    let data;
 
-        responseData.push({
-          day: dayStart.toLocaleDateString(),
-          totalSalesAmount: calculateSales(dayStart, dayEnd),
-        });
-      }
-    } else if (filter === "monthly") {
-      // Get the start of the current month
-      const startOfMonth = new Date(
-        currentDate.getFullYear(),
-        currentDate.getMonth(),
-        1
-      );
+    if (period === "yearly") {
+      data = Array.from({ length: 12 }, (_, i) => ({
+        month: new Date(2025, i).toLocaleString("default", { month: "long" }),
+        totalSalesAmount: 0,
+      }));
+      transactions.forEach((transaction) => {
+        const monthIndex = new Date(transaction.date).getMonth();
+        data[monthIndex].totalSalesAmount += transaction.amount;
+      });
+    } else if (period === "weekly") {
+      const days = Array.from({ length: 7 }, (_, i) => {
+        const day = new Date();
+        day.setDate(endDate.getDate() - i);
+        return {
+          day: day.toLocaleDateString(),
+          totalSalesAmount: 0,
+        };
+      }).reverse();
+      transactions.forEach((transaction) => {
+        const transactionDate = new Date(transaction.date).toLocaleDateString();
+        const dayData = days.find((day) => day.day === transactionDate);
+        if (dayData) {
+          dayData.totalSalesAmount += transaction.amount;
+        }
+      });
+      data = days;
+    } else if (period === "monthly") {
       const daysInMonth = new Date(
-        currentDate.getFullYear(),
-        currentDate.getMonth() + 1,
+        endDate.getFullYear(),
+        endDate.getMonth() + 1,
         0
       ).getDate();
-
-      for (let i = 1; i <= daysInMonth; i++) {
-        const dayStart = new Date(
-          currentDate.getFullYear(),
-          currentDate.getMonth(),
-          i
-        );
-        const dayEnd = new Date(dayStart);
-        dayEnd.setHours(23, 59, 59, 999);
-
-        responseData.push({
-          day: dayStart.toLocaleDateString(),
-          totalSalesAmount: calculateSales(dayStart, dayEnd),
-        });
-      }
-    } else if (filter === "yearly") {
-      // Get the start of the current year
-      const startOfYear = new Date(currentDate.getFullYear(), 0, 1);
-
-      for (let i = 0; i < 12; i++) {
-        const monthStart = new Date(currentDate.getFullYear(), i, 1);
-        const monthEnd = new Date(currentDate.getFullYear(), i + 1, 0); // Last day of the month
-
-        responseData.push({
-          month: monthStart.toLocaleString("default", { month: "long" }),
-          totalSalesAmount: calculateSales(monthStart, monthEnd),
-        });
-      }
+      const days = Array.from({ length: daysInMonth }, (_, i) => ({
+        day: new Date(
+          endDate.getFullYear(),
+          endDate.getMonth(),
+          i + 1
+        ).toLocaleDateString(),
+        totalSalesAmount: 0,
+      }));
+      transactions.forEach((transaction) => {
+        const transactionDate = new Date(transaction.date).toLocaleDateString();
+        const dayData = days.find((day) => day.day === transactionDate);
+        if (dayData) {
+          dayData.totalSalesAmount += transaction.amount;
+        }
+      });
+      data = days;
     }
 
-    return res.status(200).json({
+    res.status(200).json({
       success: true,
       message: "Successfully retrieved user course statistics",
-      filter,
-      data: responseData,
+      filter: period,
+      data,
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ success: false, message: "Server error" });
+    res.status(500).json({ success: false, message: "Internal server error" });
   }
 };
 
@@ -709,7 +834,8 @@ module.exports = {
   getAllCoursesByCategory,
   getCourseById,
   getCourseByInstructorId,
-  getUserCourseTransactionStatistcs,
+  // getUserCourseTransactionStatistcs,
+  getInstructorTransactions,
   updateCourseById,
   deleteCourseById,
   toggleEnableDisableCourse,

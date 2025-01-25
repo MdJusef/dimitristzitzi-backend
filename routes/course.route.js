@@ -5,7 +5,8 @@ const {
   getAllCourses,
   getCourseById,
   getCourseByInstructorId,
-  getUserCourseTransactionStatistcs,
+  // getUserCourseTransactionStatistcs,
+  getInstructorTransactions,
   updateCourseById,
   deleteCourseById,
   toggleEnableDisableCourse,
@@ -48,10 +49,15 @@ routes.patch(
 
 routes.get("/get-all-categories", getAllCategories);
 
+// routes.get(
+//   "/get-user-course-transaction-statistcs/:id",
+//   // isAuthorizedUser,
+//   getUserCourseTransactionStatistcs
+// );
 routes.get(
-  "/get-user-course-transaction-statistcs/:id",
+  "/get-instructor-transactions/:instructorId",
   // isAuthorizedUser,
-  getUserCourseTransactionStatistcs
+  getInstructorTransactions
 );
 
 module.exports = routes;
