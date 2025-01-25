@@ -52,4 +52,24 @@ const emailWithNodemailerGmail = async (emailData) => {
   }
 };
 
-module.exports = { emailWithNodemailer, emailWithNodemailerGmail };
+const emailToContactUs = async (emailData) => {
+  try {
+    const mailOptions = {
+      from: emailData.email, // sender address
+      to: process.env.EMAIL_HOST_USER, // list of receivers
+      subject: emailData.subject, // Subject line
+      html: emailData.html, // html body
+    };
+    const info = await transporterGmail.sendMail(mailOptions);
+    console.log("Email sent %s", info.response);
+  } catch (error) {
+    console.error("Error sending mail", error);
+    throw error;
+  }
+};
+
+module.exports = {
+  emailWithNodemailer,
+  emailWithNodemailerGmail,
+  emailToContactUs,
+};

@@ -19,6 +19,7 @@ const faqRouter = require("./routes/faq.route");
 const tipRouter = require("./routes/tip.route");
 const notificationRouter = require("./routes/notification.route");
 const webinarRouter = require("./routes/webinar.route");
+const supportRouter = require("./routes/support.route");
 
 const app = express();
 
@@ -65,6 +66,7 @@ app.use("/faq", faqRouter);
 app.use("/tip", tipRouter);
 app.use("/notification", notificationRouter);
 app.use("/webinar", webinarRouter);
+app.use("/support", supportRouter);
 
 // Route to handle all other invalid requests
 app.use((req, res) => {
