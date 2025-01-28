@@ -1,0 +1,2983 @@
+{
+	"info": {
+		"_postman_id": "959d7512-2118-4dbb-bb30-42fa8f85eab0",
+		"name": "pantognostis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38194436"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "leboc72253@bflcafe.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "leboc72253@bflcafe.com",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "abir",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "user",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/users/auth/signup",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "google signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "firstName",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "lastName",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/auth/google-signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"auth",
+								"google-signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signup as instructor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "hehob21449@cironex.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "hehob21449@cironex.com",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "hehob",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/users/auth/signup-as-instructor",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"auth",
+								"signup-as-instructor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verify email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "hehob21449@cironex.com",
+									"type": "text"
+								},
+								{
+									"key": "emailVerifyCode",
+									"value": "1107",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/users/auth/verify-email",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"auth",
+								"verify-email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forgot password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "pihij60420@regishub.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/users/auth/forgot-password",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"auth",
+								"forgot-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "pihij60420@regishub.com",
+									"type": "text"
+								},
+								{
+									"key": "newPassword",
+									"value": "pihij60420@regishub.com",
+									"type": "text"
+								},
+								{
+									"key": "confirmPassword",
+									"value": "pihij60420@regishub.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/users/auth/reset-password",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"auth",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "nodenat960@paxnw.com",
+									"type": "text"
+								},
+								{
+									"key": "newPassword",
+									"value": "nodenat961",
+									"type": "text"
+								},
+								{
+									"key": "confirmPassword",
+									"value": "nodenat961",
+									"type": "text"
+								},
+								{
+									"key": "oldPassword",
+									"value": "nodenat960",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/auth/change-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"auth",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "approve instructor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM1OGM1NzU5YjZlNzcwYTM5Y2E4NjMiLCJuYW1lIjoiYWRtaW4gdXNlciIsImVtYWlsIjoiYWRtaW5AZW1haWwuY29tIiwicGFzc3dvcmQiOiIkMmEkMTAkTjBDdlN1V1VNYkJ5ZkZSV3hEYWswT2FQOWUvVmtHRE54dnVQNGRGd0hpWElnaEVydHZQTWkiLCJyb2xlIjpbImFkbWluIl0sImVtYWlsVmVyaWZpZWQiOmZhbHNlLCJlbWFpbFZlcmlmeUNvZGUiOiI1NDA0IiwiaXNBY3RpdmUiOnRydWUsImlhdCI6MTczMTk5MjQ3OSwiZXhwIjoxNzMyMDc4ODc5fQ.h3-aFNEdzNY8uIXVkna8Np2Z09IIPH8tB3fU4A5I4YY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "instructorId",
+									"value": "6735913ec8498925b6d9d2f3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/users/auth/approve-instructor",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"auth",
+								"approve-instructor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cancel instructor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM1OGM1NzU5YjZlNzcwYTM5Y2E4NjMiLCJuYW1lIjoiYWRtaW4gdXNlciIsImVtYWlsIjoiYWRtaW5AZW1haWwuY29tIiwicGFzc3dvcmQiOiIkMmEkMTAkTjBDdlN1V1VNYkJ5ZkZSV3hEYWswT2FQOWUvVmtHRE54dnVQNGRGd0hpWElnaEVydHZQTWkiLCJyb2xlIjoiYWRtaW4iLCJlbWFpbFZlcmlmaWVkIjpmYWxzZSwiZW1haWxWZXJpZnlDb2RlIjoiNTQwNCIsImlzQWN0aXZlIjp0cnVlLCJpYXQiOjE3MzE1NjI3NjQsImV4cCI6MTczMTY0OTE2NH0.2dE5hg0aEwBbFYliPZdFjk4wSHCA7tEYHuKUfjZhjNA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "instructorId",
+									"value": "6735913ec8498925b6d9d2f3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/users/auth/cancel-instructor",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"auth",
+								"cancel-instructor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM1OTEzZWM4NDk4OTI1YjZkOWQyZjMiLCJuYW1lIjoiaGVob2IiLCJlbWFpbCI6ImhlaG9iMjE0NDlAY2lyb25leC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCQyd3NGaXNQVHpkNXlLRGY1Rm96NDEuaXEzMkJWaU1BWGpmR0JhN3pIOGdwaXouRWRTd1hKLiIsInJvbGUiOlsidXNlciIsImluc3RydWN0b3IiXSwiZW1haWxWZXJpZmllZCI6ZmFsc2UsImVtYWlsVmVyaWZ5Q29kZSI6IjcyNDAiLCJpc0FjdGl2ZSI6dHJ1ZSwiaWF0IjoxNzMxOTkyNjQ0LCJleHAiOjE3MzIwNzkwNDR9.yQX8csvPMHuPAnOFE8Sr8ls3vjoc-Nl7zQ7zGgeUPmI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "hehob21449@cironex.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "hehob21449@cironex.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/users/auth/login",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "admin@email.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "admin@email.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/users/auth/login",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login as instructor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "pihij60420@regishub.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "pihij60420@regishub.com",
+									"type": "text"
+								},
+								{
+									"key": "nhsNumber",
+									"value": "211",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/users/auth/login-as-owner",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"auth",
+								"login-as-owner"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzAxMjdlZDdhZDNlZDJjNTNlNDg5YjEiLCJlbWFpbCI6ImRvY3RvckBlbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCRtSXZLYUovYkVrUEVGby5rLk90U2t1QnpNWUtaMUk4ck5HWHJMYWcyaVZHV2J4ZzUyNEtsNiIsInJvbGUiOiJwYXRpZW50IiwiZG9jdG9yQXBwbGljYXRpb25TdGF0dXMiOiJjYW5jZWxsZWQiLCJiYWxhbmNlIjowLCJuaHNOdW1iZXIiOiIxNzI4MTI5MDA1Njk2IiwiY29uc3VsdGF0aW9uSGlzdG9yeSI6W10sInVwY29taW5nSGlzdG9yeSI6W10sIm5vdGlmaWNhdGlvbnMiOlsiNjcwMTI3ZWQ3YWQzZWQyYzUzZTQ4OWIzIiwiNjcwMTI4MzU3YWQzZWQyYzUzZTQ4OWJjIiwiNjcwMTJiYjM3YWQzZWQyYzUzZTQ4OWMzIl0sImlzRG9jdG9yIjpmYWxzZSwiaXNWZXJpZmllZCI6ZmFsc2UsImlzQWN0aXZlIjp0cnVlLCJpc0xvY2tlZCI6ZmFsc2UsImNyZWF0ZWRBdCI6IjIwMjQtMTAtMDVUMTE6NTA6MDUuNzAwWiIsInVwZGF0ZWRBdCI6IjIwMjQtMTAtMDVUMTI6MDY6MTEuMzYyWiIsIl9fdiI6MywiaWF0IjoxNzI4MTMwMDMwLCJleHAiOjE3MjgyMTY0MzB9.NBF_ykGxONDB9ubZsCNwcHtS4iq7B1upSU5tQP0HF6U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"abir@email.com\",\r\n    \"password\": \"123456\",\r\n    \"nhsNumber\": \"211\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/auth/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "get all users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzAxMjcyMjUzN2UxNDk1OTliN2ZjMDgiLCJlbWFpbCI6ImFkbWluQGVtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJGY0b0Q1cHVmLk4wNlZpc0tsTFdzeC5JY1RNLzhJcXFwYk5PVDdaVmJUZ2xEUmlWVmZVOTlHIiwicm9sZSI6ImFkbWluIiwiYmFsYW5jZSI6MCwidXBjb21pbmdIaXN0b3J5IjpbXSwiaXNWZXJpZmllZCI6ZmFsc2UsImlzQWN0aXZlIjp0cnVlLCJlbWFpbFZlcmlmaWVkIjpmYWxzZSwiaW1hZ2UiOiJwdWJsaWMvdXBsb2Fkcy9pbWFnZXMvMTczMDEzMDM0OTkzOS1ncmF0aXNvZ3JhcGh5LWN5YmVyLWtpdHR5LTgwMHg1MjUuanBnIiwibmFtZSI6IkFkbWluIiwicGhvbmUiOiI1NjQ1NDY2NDU2NDUiLCJpYXQiOjE3MzA1MjQ3MDMsImV4cCI6MTczMDYxMTEwM30.cL_CNYypFgVucGo6HwwdNJc8_Jwmu_MwZOTKz0EaPE4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "doctor@email.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "doctor",
+									"type": "text"
+								},
+								{
+									"key": "nhsNumber",
+									"value": "211",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "doctor",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/users",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all instructors",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "doctor@email.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "doctor",
+									"type": "text"
+								},
+								{
+									"key": "nhsNumber",
+									"value": "211",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "doctor",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/users/instructors",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"instructors"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "nodenat",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get one user by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "doctor@email.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "doctor",
+									"type": "text"
+								},
+								{
+									"key": "nhsNumber",
+									"value": "211",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "doctor",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/users/get-one-user/6735913ec8498925b6d9d2f3",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"get-one-user",
+								"6735913ec8498925b6d9d2f3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user by id",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "arafat",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "0199999999",
+									"type": "text"
+								},
+								{
+									"key": "profession",
+									"value": "teacher",
+									"type": "text"
+								},
+								{
+									"key": "companyName",
+									"value": "selise",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/users/get-one-user/6735913ec8498925b6d9d2f3",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"get-one-user",
+								"6735913ec8498925b6d9d2f3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get own profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM1OTEzZWM4NDk4OTI1YjZkOWQyZjMiLCJuYW1lIjoiaGVob2IiLCJlbWFpbCI6ImhlaG9iMjE0NDlAY2lyb25leC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCQyd3NGaXNQVHpkNXlLRGY1Rm96NDEuaXEzMkJWaU1BWGpmR0JhN3pIOGdwaXouRWRTd1hKLiIsInJvbGUiOlsidXNlciIsImluc3RydWN0b3IiXSwiZW1haWxWZXJpZmllZCI6ZmFsc2UsImVtYWlsVmVyaWZ5Q29kZSI6IjcyNDAiLCJpc0FjdGl2ZSI6dHJ1ZSwiaWF0IjoxNzMxOTkyNjQ0LCJleHAiOjE3MzIwNzkwNDR9.yQX8csvPMHuPAnOFE8Sr8ls3vjoc-Nl7zQ7zGgeUPmI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "arafat",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "0199999999",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/ABIR/Pictures/Screenshots/Screenshot (10).png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/users/profile",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update profile by user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM1OTEzZWM4NDk4OTI1YjZkOWQyZjMiLCJuYW1lIjoiaGVob2IiLCJlbWFpbCI6ImhlaG9iMjE0NDlAY2lyb25leC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCQyd3NGaXNQVHpkNXlLRGY1Rm96NDEuaXEzMkJWaU1BWGpmR0JhN3pIOGdwaXouRWRTd1hKLiIsInJvbGUiOlsidXNlciIsImluc3RydWN0b3IiXSwiZW1haWxWZXJpZmllZCI6ZmFsc2UsImVtYWlsVmVyaWZ5Q29kZSI6IjcyNDAiLCJpc0FjdGl2ZSI6dHJ1ZSwiaWF0IjoxNzMxOTkyNjg2LCJleHAiOjE3MzIwNzkwODZ9.Rja-SQq1cosvLVWiObm17hN2BZzMrh1IzwR4yknHnfs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "pihij",
+									"type": "text"
+								},
+								{
+									"key": "profession",
+									"value": "jihip",
+									"type": "text"
+								},
+								{
+									"key": "companyName",
+									"value": "california",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "0199999999",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/users/update-profile-by-user",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"update-profile-by-user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "reservations",
+			"item": [
+				{
+					"name": "get all reservations",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb25zdWx0YXRpb25VcGNvbWluZyI6W10sImVtYWlsVmVyaWZpZWQiOmZhbHNlLCJfaWQiOiI2NzAxMjcyMjUzN2UxNDk1OTliN2ZjMDgiLCJlbWFpbCI6ImFkbWluQGVtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJFZDVHNaN0tJNS4uWEdvYS41b0xZU3VzdTVqTzVCcEhEb1R2NTFpVjl2eWhZN1IwTWkzWWp1Iiwicm9sZSI6ImFkbWluIiwiZG9jdG9yQXBwbGljYXRpb25TdGF0dXMiOiJub3RBcHBsaWVkIiwiYmFsYW5jZSI6MCwiY29uc3VsdGF0aW9uSGlzdG9yeSI6W10sInVwY29taW5nSGlzdG9yeSI6W10sIm5vdGlmaWNhdGlvbnMiOlsiNjcwMTI3ZWQ3YWQzZWQyYzUzZTQ4OWIzIiwiNjcwMTI4MzU3YWQzZWQyYzUzZTQ4OWJjIiwiNjcwMTJiYjM3YWQzZWQyYzUzZTQ4OWMzIiwiNjcwMzYwYTU2OTM2NjRkMjgyZWFiM2FhIl0sImlzRG9jdG9yIjpmYWxzZSwiaXNWZXJpZmllZCI6ZmFsc2UsImlzQWN0aXZlIjp0cnVlLCJpc0xvY2tlZCI6ZmFsc2UsImNyZWF0ZWRBdCI6IjIwMjQtMTAtMDVUMTE6NDY6NDIuOTYzWiIsInVwZGF0ZWRBdCI6IjIwMjQtMTAtMDdUMDQ6MTY6MzcuMjQ0WiIsIl9fdiI6NCwic2VydmljZXMiOltdLCJpYXQiOjE3Mjk1MDcxNDAsImV4cCI6MTcyOTU5MzU0MH0.7VMfQk1Chc5YsvCWR_haBdtLnJPjdpBSM_mS-Q8lHRg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "doctor@email.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "doctor",
+									"type": "text"
+								},
+								{
+									"key": "nhsNumber",
+									"value": "211",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "doctor",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/reservation/get-all-reservations",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"reservation",
+								"get-all-reservations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get one reservation by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "doctor@email.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "doctor",
+									"type": "text"
+								},
+								{
+									"key": "nhsNumber",
+									"value": "211",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "doctor",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/reservation/get-reservation-by-id/67275311d8a90bda28272823",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"reservation",
+								"get-reservation-by-id",
+								"67275311d8a90bda28272823"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get reservation by user",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzFmNGU2YWFjNjczYjJkZjM1MjFmNzUiLCJmaXJzdE5hbWUiOiJwaWhpaiIsImxhc3ROYW1lIjoiamloaXAiLCJmdWxsTmFtZSI6InBpaGlqNjA0MjAgcGloaWo2MDQyMCIsImVtYWlsIjoicGloaWo2MDQyMEByZWdpc2h1Yi5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCQwNWV6bDNIRXN6U2Y0RFByc3ZacS51MGVvTDJ6OFlKdjAuQmpUU3RKN1M2Qi5QeUlSN3l2VyIsInJvbGUiOlsiZ3Vlc3QiLCJvd25lciJdLCJvd25lckFwcGxpY2F0aW9uU3RhdHVzIjoiYXBwcm92ZWQiLCJwaG9uZSI6IjAxOTk5OTk5OTkiLCJub3RpZmljYXRpb25zIjpbIjY3MjBhNDU5YjcxYjc3NmM5MDk0MWY5NyIsIjY3MjBhOTliNjk0YjM5NDY1MjE3ZTYzNCIsIjY3MjBhYTg1Njk0YjM5NDY1MjE3ZTYzYiIsIjY3MjBhZGJiYmNlNzhjMDEwNDM4YzNiZSIsIjY3MjBhZGNiYmNlNzhjMDEwNDM4YzNjNiIsIjY3MjBhZTI0YmNlNzhjMDEwNDM4YzNjZiIsIjY3MjBhZTJhYmNlNzhjMDEwNDM4YzNkNyIsIjY3MjBhZTRjYzUyOGZlYzNhZjI1M2U3ZSIsIjY3MjBhZTUxYzUyOGZlYzNhZjI1M2U4NiIsIjY3MjBhZWFjZTEzNDE1ZTM1NmZhNmJkNyIsIjY3MjBhZWFmZTEzNDE1ZTM1NmZhNmJkZiIsIjY3MjBhZWUzYTNmM2ZiOTA3YjYyM2MwNyIsIjY3MjBhZWZjYTNmM2ZiOTA3YjYyM2MwZiIsIjY3MjVmNjQ2YWQ3MDg1NWY5YjhkZGYzYiIsIjY3MjVmNmVmNjk5NWM1NGFiZmE1MjNmYyIsIjY3MjYwMDU4Yjg1NDBkNmY5MmVjNDNjMyIsIjY3MjcwNTA5MjExYTZmNDNkYWFkNDgxZiIsIjY3Mjc1MzJiODZiZWJjOTVlOGYxYTk1MiJdLCJpc093bmVyIjp0cnVlLCJlbWFpbFZlcmlmaWVkIjp0cnVlLCJlbWFpbFZlcmlmeUNvZGUiOiI5NzczIiwiaXNBY3RpdmUiOnRydWUsImlzTG9ja2VkIjpmYWxzZSwiY3JlYXRlZEF0IjoiMjAyNC0xMC0yOFQwODo0MjoxOC44ODRaIiwidXBkYXRlZEF0IjoiMjAyNC0xMS0wM1QxMDo0MDo0My44MDVaIiwiX192IjoyMiwibG9naW5UeXBlIjoiZW1haWwiLCJwcm9wZXJ0aWVzIjpbIjY3MjcwNTA4MjExYTZmNDNkYWFkNDgxZCJdLCJhZGRyZXNzIjoiY2FsaWZvcm5pYSIsImltYWdlIjoicHVibGljL3VwbG9hZHMvaW1hZ2VzLzE3MzA2MDk3MjM1MzAtU2NyZWVuc2hvdCAoMykucG5nIiwicmVzZXJ2YXRpb25zIjpbIjY3Mjc1MzJiODZiZWJjOTVlOGYxYTk1MCJdLCJpYXQiOjE3MzA2MzExMjUsImV4cCI6MTczMDcxNzUyNX0.ykFzo5Qlj5vsSKQgpVTOOBVfAAmAdevBtgosn6ChWD4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "patientId",
+									"value": "67020d51bf92bbc342325f6f",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/reservation/get-reservation-by-user",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"reservation",
+								"get-reservation-by-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "book/create a reservation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNlcnZhdGlvbnMiOltdLCJfaWQiOiI2NzFmNGU2YWFjNjczYjJkZjM1MjFmNzUiLCJmaXJzdE5hbWUiOiJwaWhpaiIsImxhc3ROYW1lIjoiamloaXAiLCJmdWxsTmFtZSI6InBpaGlqNjA0MjAgcGloaWo2MDQyMCIsImVtYWlsIjoicGloaWo2MDQyMEByZWdpc2h1Yi5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCQwNWV6bDNIRXN6U2Y0RFByc3ZacS51MGVvTDJ6OFlKdjAuQmpUU3RKN1M2Qi5QeUlSN3l2VyIsInJvbGUiOlsiZ3Vlc3QiLCJvd25lciJdLCJvd25lckFwcGxpY2F0aW9uU3RhdHVzIjoiYXBwcm92ZWQiLCJwaG9uZSI6IjAxOTk5OTk5OTkiLCJub3RpZmljYXRpb25zIjpbIjY3MjBhNDU5YjcxYjc3NmM5MDk0MWY5NyIsIjY3MjBhOTliNjk0YjM5NDY1MjE3ZTYzNCIsIjY3MjBhYTg1Njk0YjM5NDY1MjE3ZTYzYiIsIjY3MjBhZGJiYmNlNzhjMDEwNDM4YzNiZSIsIjY3MjBhZGNiYmNlNzhjMDEwNDM4YzNjNiIsIjY3MjBhZTI0YmNlNzhjMDEwNDM4YzNjZiIsIjY3MjBhZTJhYmNlNzhjMDEwNDM4YzNkNyIsIjY3MjBhZTRjYzUyOGZlYzNhZjI1M2U3ZSIsIjY3MjBhZTUxYzUyOGZlYzNhZjI1M2U4NiIsIjY3MjBhZWFjZTEzNDE1ZTM1NmZhNmJkNyIsIjY3MjBhZWFmZTEzNDE1ZTM1NmZhNmJkZiIsIjY3MjBhZWUzYTNmM2ZiOTA3YjYyM2MwNyIsIjY3MjBhZWZjYTNmM2ZiOTA3YjYyM2MwZiIsIjY3MjVmNjQ2YWQ3MDg1NWY5YjhkZGYzYiIsIjY3MjVmNmVmNjk5NWM1NGFiZmE1MjNmYyIsIjY3MjYwMDU4Yjg1NDBkNmY5MmVjNDNjMyIsIjY3MjcwNTA5MjExYTZmNDNkYWFkNDgxZiJdLCJpc093bmVyIjp0cnVlLCJlbWFpbFZlcmlmaWVkIjp0cnVlLCJlbWFpbFZlcmlmeUNvZGUiOiI5NzczIiwiaXNBY3RpdmUiOnRydWUsImlzTG9ja2VkIjpmYWxzZSwiY3JlYXRlZEF0IjoiMjAyNC0xMC0yOFQwODo0MjoxOC44ODRaIiwidXBkYXRlZEF0IjoiMjAyNC0xMS0wM1QwNTowNzoyMS4xMjdaIiwiX192IjoyMSwibG9naW5UeXBlIjoiZW1haWwiLCJwcm9wZXJ0aWVzIjpbIjY3MjcwNTA4MjExYTZmNDNkYWFkNDgxZCJdLCJhZGRyZXNzIjoiY2FsaWZvcm5pYSIsImltYWdlIjoicHVibGljL3VwbG9hZHMvaW1hZ2VzLzE3MzA2MDk3MjM1MzAtU2NyZWVuc2hvdCAoMykucG5nIiwiaWF0IjoxNzMwNjI5NTY5LCJleHAiOjE3MzA3MTU5Njl9.nzcygKVB8DHZdCfcWng69OTPXr0X00GGNAFzBQ27reE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "propertyId",
+									"value": "6725f7186995c54abfa52403",
+									"type": "text"
+								},
+								{
+									"key": "checkInDate",
+									"value": "2024-11-02",
+									"type": "text"
+								},
+								{
+									"key": "checkOutDate",
+									"value": "2024-11-02",
+									"type": "text"
+								},
+								{
+									"key": "guests",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "totalPrice",
+									"value": "5",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/reservation/reserve-property",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"reservation",
+								"reserve-property"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "payments",
+			"item": [
+				{
+					"name": "create payment intent",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "appointmentId",
+									"value": "6715eb518613e96252b5d3f1",
+									"type": "text"
+								},
+								{
+									"key": "paymentMethodId",
+									"value": "pm_card_visa",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "5",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/payment/create-payment-intent",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"payment",
+								"create-payment-intent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get one payment intent by id",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "paymentId",
+									"value": "pi_3Q9jmXIE7z8j8FQD0QSzE7mF",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/payment/get-payment-intent",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"payment",
+								"get-payment-intent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all payment intents",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb25zdWx0YXRpb25VcGNvbWluZyI6W10sImVtYWlsVmVyaWZpZWQiOmZhbHNlLCJfaWQiOiI2NzAxMjcyMjUzN2UxNDk1OTliN2ZjMDgiLCJlbWFpbCI6ImFkbWluQGVtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJFZDVHNaN0tJNS4uWEdvYS41b0xZU3VzdTVqTzVCcEhEb1R2NTFpVjl2eWhZN1IwTWkzWWp1Iiwicm9sZSI6ImFkbWluIiwiZG9jdG9yQXBwbGljYXRpb25TdGF0dXMiOiJub3RBcHBsaWVkIiwiYmFsYW5jZSI6MCwiY29uc3VsdGF0aW9uSGlzdG9yeSI6W10sInVwY29taW5nSGlzdG9yeSI6W10sIm5vdGlmaWNhdGlvbnMiOlsiNjcwMTI3ZWQ3YWQzZWQyYzUzZTQ4OWIzIiwiNjcwMTI4MzU3YWQzZWQyYzUzZTQ4OWJjIiwiNjcwMTJiYjM3YWQzZWQyYzUzZTQ4OWMzIiwiNjcwMzYwYTU2OTM2NjRkMjgyZWFiM2FhIl0sImlzRG9jdG9yIjpmYWxzZSwiaXNWZXJpZmllZCI6ZmFsc2UsImlzQWN0aXZlIjp0cnVlLCJpc0xvY2tlZCI6ZmFsc2UsImNyZWF0ZWRBdCI6IjIwMjQtMTAtMDVUMTE6NDY6NDIuOTYzWiIsInVwZGF0ZWRBdCI6IjIwMjQtMTAtMDdUMDQ6MTY6MzcuMjQ0WiIsIl9fdiI6NCwic2VydmljZXMiOltdLCJpYXQiOjE3Mjk0OTI3MjMsImV4cCI6MTcyOTU3OTEyM30.G3uakQlPLlqgX-037ez_WPUHN-rmu-tobC3Q3SPwKbI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "paymentId",
+									"value": "pi_3Q9jmXIE7z8j8FQD0QSzE7mF",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/payment/get-all-payment-intents",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"payment",
+								"get-all-payment-intents"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "categories",
+			"item": [
+				{
+					"name": "get all categories",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{baseURL}}/category/get-all-categories",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"category",
+								"get-all-categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get one category",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "doctor@email.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "doctor",
+									"type": "text"
+								},
+								{
+									"key": "nhsNumber",
+									"value": "211",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "doctor",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/category/get-category/6721c9944925a5cef2e961d0",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"category",
+								"get-category",
+								"6721c9944925a5cef2e961d0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add a category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Rooms",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/category/add-category",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"category",
+								"add-category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit a category",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "updated",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "updated",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/category/edit-category/6721c9944925a5cef2e961d0",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"category",
+								"edit-category",
+								"6721c9944925a5cef2e961d0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete a category",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{baseURL}}/category/delete-category/6721c9944925a5cef2e961d0",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"category",
+								"delete-category",
+								"6721c9944925a5cef2e961d0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "review rating",
+			"item": [
+				{
+					"name": "get all reviews",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "doctorId",
+									"value": "670127ed7ad3ed2c53e489b1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/review/all-reviews",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"review",
+								"all-reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get one review by review id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "doctorId",
+									"value": "670127ed7ad3ed2c53e489b1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/review/get-one-review/67276edeb50212de313d2d71",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"review",
+								"get-one-review",
+								"67276edeb50212de313d2d71"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get review by user",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzFmNGU2YWFjNjczYjJkZjM1MjFmNzUiLCJmaXJzdE5hbWUiOiJwaWhpaiIsImxhc3ROYW1lIjoiamloaXAiLCJmdWxsTmFtZSI6InBpaGlqNjA0MjAgcGloaWo2MDQyMCIsImVtYWlsIjoicGloaWo2MDQyMEByZWdpc2h1Yi5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCQwNWV6bDNIRXN6U2Y0RFByc3ZacS51MGVvTDJ6OFlKdjAuQmpUU3RKN1M2Qi5QeUlSN3l2VyIsInJvbGUiOlsiZ3Vlc3QiLCJvd25lciJdLCJvd25lckFwcGxpY2F0aW9uU3RhdHVzIjoiYXBwcm92ZWQiLCJwaG9uZSI6IjAxOTk5OTk5OTkiLCJub3RpZmljYXRpb25zIjpbIjY3MjBhNDU5YjcxYjc3NmM5MDk0MWY5NyIsIjY3MjBhOTliNjk0YjM5NDY1MjE3ZTYzNCIsIjY3MjBhYTg1Njk0YjM5NDY1MjE3ZTYzYiIsIjY3MjBhZGJiYmNlNzhjMDEwNDM4YzNiZSIsIjY3MjBhZGNiYmNlNzhjMDEwNDM4YzNjNiIsIjY3MjBhZTI0YmNlNzhjMDEwNDM4YzNjZiIsIjY3MjBhZTJhYmNlNzhjMDEwNDM4YzNkNyIsIjY3MjBhZTRjYzUyOGZlYzNhZjI1M2U3ZSIsIjY3MjBhZTUxYzUyOGZlYzNhZjI1M2U4NiIsIjY3MjBhZWFjZTEzNDE1ZTM1NmZhNmJkNyIsIjY3MjBhZWFmZTEzNDE1ZTM1NmZhNmJkZiIsIjY3MjBhZWUzYTNmM2ZiOTA3YjYyM2MwNyIsIjY3MjBhZWZjYTNmM2ZiOTA3YjYyM2MwZiIsIjY3MjVmNjQ2YWQ3MDg1NWY5YjhkZGYzYiIsIjY3MjVmNmVmNjk5NWM1NGFiZmE1MjNmYyIsIjY3MjYwMDU4Yjg1NDBkNmY5MmVjNDNjMyIsIjY3MjcwNTA5MjExYTZmNDNkYWFkNDgxZiIsIjY3Mjc1MzJiODZiZWJjOTVlOGYxYTk1MiJdLCJpc093bmVyIjp0cnVlLCJlbWFpbFZlcmlmaWVkIjp0cnVlLCJlbWFpbFZlcmlmeUNvZGUiOiI5NzczIiwiaXNBY3RpdmUiOnRydWUsImlzTG9ja2VkIjpmYWxzZSwiY3JlYXRlZEF0IjoiMjAyNC0xMC0yOFQwODo0MjoxOC44ODRaIiwidXBkYXRlZEF0IjoiMjAyNC0xMS0wM1QxMDo0MDo0My44MDVaIiwiX192IjoyMiwibG9naW5UeXBlIjoiZW1haWwiLCJwcm9wZXJ0aWVzIjpbIjY3MjcwNTA4MjExYTZmNDNkYWFkNDgxZCJdLCJhZGRyZXNzIjoiY2FsaWZvcm5pYSIsImltYWdlIjoicHVibGljL3VwbG9hZHMvaW1hZ2VzLzE3MzA2MDk3MjM1MzAtU2NyZWVuc2hvdCAoMykucG5nIiwicmVzZXJ2YXRpb25zIjpbIjY3Mjc1MzJiODZiZWJjOTVlOGYxYTk1MCJdLCJpYXQiOjE3MzA2OTEyMDUsImV4cCI6MTczMDc3NzYwNX0._BUIOUT7qRbiv3UKTonjLmDRABR7U7AXY5jXY3aGqw4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userId",
+									"value": "670b4e40ce98760d0778097f",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/review/review-by-user",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"review",
+								"review-by-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add a review rating",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzFmNGU2YWFjNjczYjJkZjM1MjFmNzUiLCJmaXJzdE5hbWUiOiJwaWhpaiIsImxhc3ROYW1lIjoiamloaXAiLCJmdWxsTmFtZSI6InBpaGlqNjA0MjAgcGloaWo2MDQyMCIsImVtYWlsIjoicGloaWo2MDQyMEByZWdpc2h1Yi5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCQwNWV6bDNIRXN6U2Y0RFByc3ZacS51MGVvTDJ6OFlKdjAuQmpUU3RKN1M2Qi5QeUlSN3l2VyIsInJvbGUiOlsiZ3Vlc3QiLCJvd25lciJdLCJvd25lckFwcGxpY2F0aW9uU3RhdHVzIjoiYXBwcm92ZWQiLCJwaG9uZSI6IjAxOTk5OTk5OTkiLCJub3RpZmljYXRpb25zIjpbIjY3MjBhNDU5YjcxYjc3NmM5MDk0MWY5NyIsIjY3MjBhOTliNjk0YjM5NDY1MjE3ZTYzNCIsIjY3MjBhYTg1Njk0YjM5NDY1MjE3ZTYzYiIsIjY3MjBhZGJiYmNlNzhjMDEwNDM4YzNiZSIsIjY3MjBhZGNiYmNlNzhjMDEwNDM4YzNjNiIsIjY3MjBhZTI0YmNlNzhjMDEwNDM4YzNjZiIsIjY3MjBhZTJhYmNlNzhjMDEwNDM4YzNkNyIsIjY3MjBhZTRjYzUyOGZlYzNhZjI1M2U3ZSIsIjY3MjBhZTUxYzUyOGZlYzNhZjI1M2U4NiIsIjY3MjBhZWFjZTEzNDE1ZTM1NmZhNmJkNyIsIjY3MjBhZWFmZTEzNDE1ZTM1NmZhNmJkZiIsIjY3MjBhZWUzYTNmM2ZiOTA3YjYyM2MwNyIsIjY3MjBhZWZjYTNmM2ZiOTA3YjYyM2MwZiIsIjY3MjVmNjQ2YWQ3MDg1NWY5YjhkZGYzYiIsIjY3MjVmNmVmNjk5NWM1NGFiZmE1MjNmYyIsIjY3MjYwMDU4Yjg1NDBkNmY5MmVjNDNjMyIsIjY3MjcwNTA5MjExYTZmNDNkYWFkNDgxZiIsIjY3Mjc1MzJiODZiZWJjOTVlOGYxYTk1MiJdLCJpc093bmVyIjp0cnVlLCJlbWFpbFZlcmlmaWVkIjp0cnVlLCJlbWFpbFZlcmlmeUNvZGUiOiI5NzczIiwiaXNBY3RpdmUiOnRydWUsImlzTG9ja2VkIjpmYWxzZSwiY3JlYXRlZEF0IjoiMjAyNC0xMC0yOFQwODo0MjoxOC44ODRaIiwidXBkYXRlZEF0IjoiMjAyNC0xMS0wM1QxMDo0MDo0My44MDVaIiwiX192IjoyMiwibG9naW5UeXBlIjoiZW1haWwiLCJwcm9wZXJ0aWVzIjpbIjY3MjcwNTA4MjExYTZmNDNkYWFkNDgxZCJdLCJhZGRyZXNzIjoiY2FsaWZvcm5pYSIsImltYWdlIjoicHVibGljL3VwbG9hZHMvaW1hZ2VzLzE3MzA2MDk3MjM1MzAtU2NyZWVuc2hvdCAoMykucG5nIiwicmVzZXJ2YXRpb25zIjpbIjY3Mjc1MzJiODZiZWJjOTVlOGYxYTk1MCJdLCJpYXQiOjE3MzA2MzExMjUsImV4cCI6MTczMDcxNzUyNX0.ykFzo5Qlj5vsSKQgpVTOOBVfAAmAdevBtgosn6ChWD4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "courseId",
+									"value": "673dbab82e2b20ec17bb58fc",
+									"type": "text"
+								},
+								{
+									"key": "review",
+									"value": "nice & attractive",
+									"type": "text"
+								},
+								{
+									"key": "rating",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "userId",
+									"value": "67416a3c161fc8d9f99836c1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/review/add-review",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"review",
+								"add-review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update a review rating",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzFmNGU2YWFjNjczYjJkZjM1MjFmNzUiLCJmaXJzdE5hbWUiOiJwaWhpaiIsImxhc3ROYW1lIjoiamloaXAiLCJmdWxsTmFtZSI6InBpaGlqNjA0MjAgcGloaWo2MDQyMCIsImVtYWlsIjoicGloaWo2MDQyMEByZWdpc2h1Yi5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCQwNWV6bDNIRXN6U2Y0RFByc3ZacS51MGVvTDJ6OFlKdjAuQmpUU3RKN1M2Qi5QeUlSN3l2VyIsInJvbGUiOlsiZ3Vlc3QiLCJvd25lciJdLCJvd25lckFwcGxpY2F0aW9uU3RhdHVzIjoiYXBwcm92ZWQiLCJwaG9uZSI6IjAxOTk5OTk5OTkiLCJub3RpZmljYXRpb25zIjpbIjY3MjBhNDU5YjcxYjc3NmM5MDk0MWY5NyIsIjY3MjBhOTliNjk0YjM5NDY1MjE3ZTYzNCIsIjY3MjBhYTg1Njk0YjM5NDY1MjE3ZTYzYiIsIjY3MjBhZGJiYmNlNzhjMDEwNDM4YzNiZSIsIjY3MjBhZGNiYmNlNzhjMDEwNDM4YzNjNiIsIjY3MjBhZTI0YmNlNzhjMDEwNDM4YzNjZiIsIjY3MjBhZTJhYmNlNzhjMDEwNDM4YzNkNyIsIjY3MjBhZTRjYzUyOGZlYzNhZjI1M2U3ZSIsIjY3MjBhZTUxYzUyOGZlYzNhZjI1M2U4NiIsIjY3MjBhZWFjZTEzNDE1ZTM1NmZhNmJkNyIsIjY3MjBhZWFmZTEzNDE1ZTM1NmZhNmJkZiIsIjY3MjBhZWUzYTNmM2ZiOTA3YjYyM2MwNyIsIjY3MjBhZWZjYTNmM2ZiOTA3YjYyM2MwZiIsIjY3MjVmNjQ2YWQ3MDg1NWY5YjhkZGYzYiIsIjY3MjVmNmVmNjk5NWM1NGFiZmE1MjNmYyIsIjY3MjYwMDU4Yjg1NDBkNmY5MmVjNDNjMyIsIjY3MjcwNTA5MjExYTZmNDNkYWFkNDgxZiIsIjY3Mjc1MzJiODZiZWJjOTVlOGYxYTk1MiJdLCJpc093bmVyIjp0cnVlLCJlbWFpbFZlcmlmaWVkIjp0cnVlLCJlbWFpbFZlcmlmeUNvZGUiOiI5NzczIiwiaXNBY3RpdmUiOnRydWUsImlzTG9ja2VkIjpmYWxzZSwiY3JlYXRlZEF0IjoiMjAyNC0xMC0yOFQwODo0MjoxOC44ODRaIiwidXBkYXRlZEF0IjoiMjAyNC0xMS0wM1QxMDo0MDo0My44MDVaIiwiX192IjoyMiwibG9naW5UeXBlIjoiZW1haWwiLCJwcm9wZXJ0aWVzIjpbIjY3MjcwNTA4MjExYTZmNDNkYWFkNDgxZCJdLCJhZGRyZXNzIjoiY2FsaWZvcm5pYSIsImltYWdlIjoicHVibGljL3VwbG9hZHMvaW1hZ2VzLzE3MzA2MDk3MjM1MzAtU2NyZWVuc2hvdCAoMykucG5nIiwicmVzZXJ2YXRpb25zIjpbIjY3Mjc1MzJiODZiZWJjOTVlOGYxYTk1MCJdLCJpYXQiOjE3MzA2OTEyMDUsImV4cCI6MTczMDc3NzYwNX0._BUIOUT7qRbiv3UKTonjLmDRABR7U7AXY5jXY3aGqw4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "courseId",
+									"value": "673dbab82e2b20ec17bb58fc",
+									"type": "text"
+								},
+								{
+									"key": "review",
+									"value": "updated",
+									"type": "text"
+								},
+								{
+									"key": "rating",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "userId",
+									"value": "6735913ec8498925b6d9d2f3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/review/update-review/67418ad44e23245a185d0ff8",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"review",
+								"update-review",
+								"67418ad44e23245a185d0ff8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete a review rating",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzFmNGU2YWFjNjczYjJkZjM1MjFmNzUiLCJmaXJzdE5hbWUiOiJwaWhpaiIsImxhc3ROYW1lIjoiamloaXAiLCJmdWxsTmFtZSI6InBpaGlqNjA0MjAgcGloaWo2MDQyMCIsImVtYWlsIjoicGloaWo2MDQyMEByZWdpc2h1Yi5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCQwNWV6bDNIRXN6U2Y0RFByc3ZacS51MGVvTDJ6OFlKdjAuQmpUU3RKN1M2Qi5QeUlSN3l2VyIsInJvbGUiOlsiZ3Vlc3QiLCJvd25lciJdLCJvd25lckFwcGxpY2F0aW9uU3RhdHVzIjoiYXBwcm92ZWQiLCJwaG9uZSI6IjAxOTk5OTk5OTkiLCJub3RpZmljYXRpb25zIjpbIjY3MjBhNDU5YjcxYjc3NmM5MDk0MWY5NyIsIjY3MjBhOTliNjk0YjM5NDY1MjE3ZTYzNCIsIjY3MjBhYTg1Njk0YjM5NDY1MjE3ZTYzYiIsIjY3MjBhZGJiYmNlNzhjMDEwNDM4YzNiZSIsIjY3MjBhZGNiYmNlNzhjMDEwNDM4YzNjNiIsIjY3MjBhZTI0YmNlNzhjMDEwNDM4YzNjZiIsIjY3MjBhZTJhYmNlNzhjMDEwNDM4YzNkNyIsIjY3MjBhZTRjYzUyOGZlYzNhZjI1M2U3ZSIsIjY3MjBhZTUxYzUyOGZlYzNhZjI1M2U4NiIsIjY3MjBhZWFjZTEzNDE1ZTM1NmZhNmJkNyIsIjY3MjBhZWFmZTEzNDE1ZTM1NmZhNmJkZiIsIjY3MjBhZWUzYTNmM2ZiOTA3YjYyM2MwNyIsIjY3MjBhZWZjYTNmM2ZiOTA3YjYyM2MwZiIsIjY3MjVmNjQ2YWQ3MDg1NWY5YjhkZGYzYiIsIjY3MjVmNmVmNjk5NWM1NGFiZmE1MjNmYyIsIjY3MjYwMDU4Yjg1NDBkNmY5MmVjNDNjMyIsIjY3MjcwNTA5MjExYTZmNDNkYWFkNDgxZiIsIjY3Mjc1MzJiODZiZWJjOTVlOGYxYTk1MiJdLCJpc093bmVyIjp0cnVlLCJlbWFpbFZlcmlmaWVkIjp0cnVlLCJlbWFpbFZlcmlmeUNvZGUiOiI5NzczIiwiaXNBY3RpdmUiOnRydWUsImlzTG9ja2VkIjpmYWxzZSwiY3JlYXRlZEF0IjoiMjAyNC0xMC0yOFQwODo0MjoxOC44ODRaIiwidXBkYXRlZEF0IjoiMjAyNC0xMS0wM1QxMDo0MDo0My44MDVaIiwiX192IjoyMiwibG9naW5UeXBlIjoiZW1haWwiLCJwcm9wZXJ0aWVzIjpbIjY3MjcwNTA4MjExYTZmNDNkYWFkNDgxZCJdLCJhZGRyZXNzIjoiY2FsaWZvcm5pYSIsImltYWdlIjoicHVibGljL3VwbG9hZHMvaW1hZ2VzLzE3MzA2MDk3MjM1MzAtU2NyZWVuc2hvdCAoMykucG5nIiwicmVzZXJ2YXRpb25zIjpbIjY3Mjc1MzJiODZiZWJjOTVlOGYxYTk1MCJdLCJpYXQiOjE3MzA2OTI0NDMsImV4cCI6MTczMDc3ODg0M30.M74ScBMuYm_eAFTxG62Ir_nYO8uL01_ZZgaNosNRpmU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "courseId",
+									"value": "673dbab82e2b20ec17bb58fc",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/review/delete-review/67276edeb50212de313d2d71?reviewId",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"review",
+								"delete-review",
+								"67276edeb50212de313d2d71"
+							],
+							"query": [
+								{
+									"key": "reviewId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "terms of service",
+			"item": [
+				{
+					"name": "get all terms of services",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "doctorId",
+									"value": "670127ed7ad3ed2c53e489b1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/terms-of-service/get-terms-of-service",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"terms-of-service",
+								"get-terms-of-service"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add terms of service",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "content",
+									"value": "Terms of service (also known as terms of use and terms and conditions, commonly abbreviated as TOS or ToS, ToU or T&C) are the legal agreements between a service provider and a person who wants to use that service. The person must agree to abide by the terms of service in order to use the offered service",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/terms-of-service/add-terms-of-service",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"terms-of-service",
+								"add-terms-of-service"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "faqs",
+			"item": [
+				{
+					"name": "add faq",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "question",
+									"value": "why should i use this",
+									"type": "text"
+								},
+								{
+									"key": "answer",
+									"value": "because this is amazing",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/faq/add-faq?question=why should i use this&answer=because this is amazing",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"faq",
+								"add-faq"
+							],
+							"query": [
+								{
+									"key": "question",
+									"value": "why should i use this"
+								},
+								{
+									"key": "answer",
+									"value": "because this is amazing"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all faqs",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "question",
+									"value": "why should i use this",
+									"type": "text"
+								},
+								{
+									"key": "answer",
+									"value": "because this is amazing",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/faq/get-all-faqs",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"faq",
+								"get-all-faqs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update faq",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/faq/update-faq?faqId=671377457972711a62117aa8&question=updated question&answer=updated answer",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"faq",
+								"update-faq"
+							],
+							"query": [
+								{
+									"key": "faqId",
+									"value": "671377457972711a62117aa8"
+								},
+								{
+									"key": "question",
+									"value": "updated question"
+								},
+								{
+									"key": "answer",
+									"value": "updated answer"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete an faq",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "question",
+									"value": "why should i use this",
+									"type": "text"
+								},
+								{
+									"key": "answer",
+									"value": "because this is amazing",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/faq/delete-faq/6713783a86dc46f0be7e470e",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"faq",
+								"delete-faq",
+								"6713783a86dc46f0be7e470e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "notification",
+			"item": [
+				{
+					"name": "get notificaion by userId",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM1OTEzZWM4NDk4OTI1YjZkOWQyZjMiLCJuYW1lIjoiaGVob2IiLCJlbWFpbCI6ImhlaG9iMjE0NDlAY2lyb25leC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCQyd3NGaXNQVHpkNXlLRGY1Rm96NDEuaXEzMkJWaU1BWGpmR0JhN3pIOGdwaXouRWRTd1hKLiIsInJvbGUiOlsidXNlciIsImluc3RydWN0b3IiXSwiZW1haWxWZXJpZmllZCI6ZmFsc2UsImVtYWlsVmVyaWZ5Q29kZSI6IjcyNDAiLCJpc0FjdGl2ZSI6dHJ1ZSwiaWF0IjoxNzMxOTkyNjg2LCJleHAiOjE3MzIwNzkwODZ9.Rja-SQq1cosvLVWiObm17hN2BZzMrh1IzwR4yknHnfs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userId",
+									"value": "67012722537e149599b7fc08",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/users/notifications-by-user/6735913ec8498925b6d9d2f3",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"notifications-by-user",
+								"6735913ec8498925b6d9d2f3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all notificaions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userId",
+									"value": "67012722537e149599b7fc08",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/users/all-notifications",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"users",
+								"all-notifications"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "course",
+			"item": [
+				{
+					"name": "get all courses",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "doctor@email.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "doctor",
+									"type": "text"
+								},
+								{
+									"key": "nhsNumber",
+									"value": "211",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "doctor",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/course/get-all-courses",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"course",
+								"get-all-courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get course by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "doctor@email.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "doctor",
+									"type": "text"
+								},
+								{
+									"key": "nhsNumber",
+									"value": "211",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "doctor",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/course/get-course-by-id/673dbab82e2b20ec17bb58fc",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"course",
+								"get-course-by-id",
+								"673dbab82e2b20ec17bb58fc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get course by instructor id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "doctor@email.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "doctor",
+									"type": "text"
+								},
+								{
+									"key": "nhsNumber",
+									"value": "211",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "doctor",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/course/get-course-by-instructor-id/6735913ec8498925b6d9d2f3",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"course",
+								"get-course-by-instructor-id",
+								"6735913ec8498925b6d9d2f3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add a course",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM1OTEzZWM4NDk4OTI1YjZkOWQyZjMiLCJuYW1lIjoibWFrc3VkIGJodWl5YW4iLCJlbWFpbCI6ImhlaG9iMjE0NDlAY2lyb25leC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCQyd3NGaXNQVHpkNXlLRGY1Rm96NDEuaXEzMkJWaU1BWGpmR0JhN3pIOGdwaXouRWRTd1hKLiIsInJvbGUiOlsidXNlciIsImluc3RydWN0b3IiXSwiZW1haWxWZXJpZmllZCI6ZmFsc2UsImVtYWlsVmVyaWZ5Q29kZSI6IjcyNDAiLCJpc0FjdGl2ZSI6dHJ1ZSwiY29tcGFueU5hbWUiOiJiZGNhbGxpbmciLCJpbWFnZSI6InB1YmxpYy91cGxvYWRzL2ltYWdlcy8xNzMxOTk3NDgzMjIyLVNjcmVlbnNob3QgKDEwKS5wbmciLCJwaG9uZSI6IjAxODg4ODg4OCIsInByb2Zlc3Npb24iOiJkZXZlbG9wZXIiLCJlbnJvbGxlZENvdXJzZXMiOltdLCJ1cGxvYWRlZENvdXJzZXMiOlsiNjczYzgyMDFkOTgxNjljZjAxYTJkZWI2IiwiNjczYzgyYTBkOTgxNjljZjAxYTJkZWJjIiwiNjczYzgyYzhkOTgxNjljZjAxYTJkZWMyIiwiNjczYzgyZTFkOTgxNjljZjAxYTJkZWM4IiwiNjczYzgyZWNkOTgxNjljZjAxYTJkZWNlIiwiNjczYzg0MTJkOTgxNjljZjAxYTJkZWQ0IiwiNjczYzg0MmRkOTgxNjljZjAxYTJkZWRhIiwiNjczYzg2NWYzZmNkMDcwZTZkM2NkYTYzIl0sImlhdCI6MTczMjA4MzYxOSwiZXhwIjoxNzMyMTcwMDE5fQ.bSU41DVv3pxqUvHRtanzTsjHvKy6ju9uCropFqcqEkM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "course title",
+									"type": "text"
+								},
+								{
+									"key": "subtitle",
+									"value": "course sub title",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "199",
+									"type": "text"
+								},
+								{
+									"key": "platformFees",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "design",
+									"type": "text"
+								},
+								{
+									"key": "subCategory",
+									"value": "ui",
+									"type": "text"
+								},
+								{
+									"key": "topic",
+									"value": "basics to advance",
+									"type": "text"
+								},
+								{
+									"key": "language",
+									"value": "english",
+									"type": "text"
+								},
+								{
+									"key": "level",
+									"value": "beginner",
+									"type": "text"
+								},
+								{
+									"key": "duration",
+									"value": "5 ",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "a new course",
+									"type": "text"
+								},
+								{
+									"key": "teachingMaterials",
+									"value": "[\"ui\", \"ux\", \"design\"]",
+									"type": "text"
+								},
+								{
+									"key": "targetAudience",
+									"value": "[\"kids\", \"adult\", \"young\"]",
+									"type": "text"
+								},
+								{
+									"key": "requirements",
+									"value": "[\"a\", \"b\", \"c\"]",
+									"type": "text"
+								},
+								{
+									"key": "welcomeMessage",
+									"value": "welcome",
+									"type": "text"
+								},
+								{
+									"key": "congratulationsMessage",
+									"value": "congrats",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/ABIR/Downloads/My affiliate list (1).png"
+								},
+								{
+									"key": "videoFile",
+									"type": "file",
+									"src": "/C:/Users/ABIR/Downloads/sample.mp4"
+								},
+								{
+									"key": "sectionCount",
+									"value": "15",
+									"type": "text"
+								},
+								{
+									"key": "lectureCount",
+									"value": "202",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/course/add-course",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"course",
+								"add-course"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update course by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM1OTEzZWM4NDk4OTI1YjZkOWQyZjMiLCJuYW1lIjoibWFrc3VkIGJodWl5YW4iLCJlbWFpbCI6ImhlaG9iMjE0NDlAY2lyb25leC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCQyd3NGaXNQVHpkNXlLRGY1Rm96NDEuaXEzMkJWaU1BWGpmR0JhN3pIOGdwaXouRWRTd1hKLiIsInJvbGUiOlsidXNlciIsImluc3RydWN0b3IiXSwiZW1haWxWZXJpZmllZCI6ZmFsc2UsImVtYWlsVmVyaWZ5Q29kZSI6IjcyNDAiLCJpc0FjdGl2ZSI6dHJ1ZSwiY29tcGFueU5hbWUiOiJiZGNhbGxpbmciLCJpbWFnZSI6InB1YmxpYy91cGxvYWRzL2ltYWdlcy8xNzMxOTk3NDgzMjIyLVNjcmVlbnNob3QgKDEwKS5wbmciLCJwaG9uZSI6IjAxODg4ODg4OCIsInByb2Zlc3Npb24iOiJkZXZlbG9wZXIiLCJlbnJvbGxlZENvdXJzZXMiOltdLCJ1cGxvYWRlZENvdXJzZXMiOlsiNjczYzgyMDFkOTgxNjljZjAxYTJkZWI2IiwiNjczYzgyYTBkOTgxNjljZjAxYTJkZWJjIiwiNjczYzgyYzhkOTgxNjljZjAxYTJkZWMyIiwiNjczYzgyZTFkOTgxNjljZjAxYTJkZWM4IiwiNjczYzgyZWNkOTgxNjljZjAxYTJkZWNlIiwiNjczYzg0MTJkOTgxNjljZjAxYTJkZWQ0IiwiNjczYzg0MmRkOTgxNjljZjAxYTJkZWRhIiwiNjczYzg2NWYzZmNkMDcwZTZkM2NkYTYzIl0sImlhdCI6MTczMjA4MzYxOSwiZXhwIjoxNzMyMTcwMDE5fQ.bSU41DVv3pxqUvHRtanzTsjHvKy6ju9uCropFqcqEkM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "course title ",
+									"type": "text"
+								},
+								{
+									"key": "subtitle",
+									"value": "course sub title",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "199",
+									"type": "text"
+								},
+								{
+									"key": "platformFees",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "design",
+									"type": "text"
+								},
+								{
+									"key": "subCategory",
+									"value": "ui",
+									"type": "text"
+								},
+								{
+									"key": "topic",
+									"value": "basics to advance",
+									"type": "text"
+								},
+								{
+									"key": "language",
+									"value": "english",
+									"type": "text"
+								},
+								{
+									"key": "level",
+									"value": "beginner",
+									"type": "text"
+								},
+								{
+									"key": "duration",
+									"value": "5 ",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "a new course",
+									"type": "text"
+								},
+								{
+									"key": "teachingMaterials",
+									"value": "[\"ui\", \"ux\", \"design\"]",
+									"type": "text"
+								},
+								{
+									"key": "targetAudience",
+									"value": "[\"kids\", \"adult\", \"young\"]",
+									"type": "text"
+								},
+								{
+									"key": "requirements",
+									"value": "[\"a\", \"b\", \"c\"]",
+									"type": "text"
+								},
+								{
+									"key": "welcomeMessage",
+									"value": "welcome",
+									"type": "text"
+								},
+								{
+									"key": "welcomeMessage",
+									"value": "welcome",
+									"type": "text"
+								},
+								{
+									"key": "congratulationsMessage",
+									"value": "congrats",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/ABIR/Downloads/My affiliate list (1).png"
+								},
+								{
+									"key": "videoFile",
+									"type": "file",
+									"src": "/C:/Users/ABIR/Downloads/sample.mp4"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/course/update-course-by-id/673d83601bdb1130c502020d",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"course",
+								"update-course-by-id",
+								"673d83601bdb1130c502020d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete a course",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"division\": \"General Doctor\",\r\n  \"doctorType\": \"vascularogist\",\r\n  \"dateTimes\": [\r\n    \"2024-10-10T10:30:00Z\",\r\n    \"2024-10-11T14:30:00Z\"\r\n  ],\r\n  \"daysOfWeek\": [\r\n    \"sunday\",\r\n    \"tuesday\"\r\n  ],\r\n  \"consultationType\": \"video\",\r\n  \"doctorId\": \"670127ed7ad3ed2c53e489b1\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/course/delete-course-by-id/673d83601bdb1130c502020d",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"course",
+								"delete-course-by-id",
+								"673d83601bdb1130c502020d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "course enable disable",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"division\": \"General Doctor\",\r\n  \"doctorType\": \"vascularogist\",\r\n  \"dateTimes\": [\r\n    \"2024-10-10T10:30:00Z\",\r\n    \"2024-10-11T14:30:00Z\"\r\n  ],\r\n  \"daysOfWeek\": [\r\n    \"sunday\",\r\n    \"tuesday\"\r\n  ],\r\n  \"consultationType\": \"video\",\r\n  \"doctorId\": \"670127ed7ad3ed2c53e489b1\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/course/toggle-enable-disable-course/673dbab82e2b20ec17bb58fc",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"course",
+								"toggle-enable-disable-course",
+								"673dbab82e2b20ec17bb58fc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "course approve cancel",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"division\": \"General Doctor\",\r\n  \"doctorType\": \"vascularogist\",\r\n  \"dateTimes\": [\r\n    \"2024-10-10T10:30:00Z\",\r\n    \"2024-10-11T14:30:00Z\"\r\n  ],\r\n  \"daysOfWeek\": [\r\n    \"sunday\",\r\n    \"tuesday\"\r\n  ],\r\n  \"consultationType\": \"video\",\r\n  \"doctorId\": \"670127ed7ad3ed2c53e489b1\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/course/toggle-approve-cancel-course/673dbab82e2b20ec17bb58fc",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"course",
+								"toggle-approve-cancel-course",
+								"673dbab82e2b20ec17bb58fc"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "section",
+			"item": [
+				{
+					"name": "get all sections under one course",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "doctor@email.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "doctor",
+									"type": "text"
+								},
+								{
+									"key": "nhsNumber",
+									"value": "211",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "doctor",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/section/get-all-sections/673dbab82e2b20ec17bb58fc",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"section",
+								"get-all-sections",
+								"673dbab82e2b20ec17bb58fc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get section by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "doctor@email.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "doctor",
+									"type": "text"
+								},
+								{
+									"key": "nhsNumber",
+									"value": "211",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "doctor",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/section/get-section-by-id/673ece5a44d1dd2cde6c959e",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"section",
+								"get-section-by-id",
+								"673ece5a44d1dd2cde6c959e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add a section",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM1OTEzZWM4NDk4OTI1YjZkOWQyZjMiLCJuYW1lIjoibWFrc3VkIGJodWl5YW4iLCJlbWFpbCI6ImhlaG9iMjE0NDlAY2lyb25leC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCQyd3NGaXNQVHpkNXlLRGY1Rm96NDEuaXEzMkJWaU1BWGpmR0JhN3pIOGdwaXouRWRTd1hKLiIsInJvbGUiOlsidXNlciIsImluc3RydWN0b3IiXSwiZW1haWxWZXJpZmllZCI6ZmFsc2UsImVtYWlsVmVyaWZ5Q29kZSI6IjcyNDAiLCJpc0FjdGl2ZSI6dHJ1ZSwiY29tcGFueU5hbWUiOiJiZGNhbGxpbmciLCJpbWFnZSI6InB1YmxpYy91cGxvYWRzL2ltYWdlcy8xNzMxOTk3NDgzMjIyLVNjcmVlbnNob3QgKDEwKS5wbmciLCJwaG9uZSI6IjAxODg4ODg4OCIsInByb2Zlc3Npb24iOiJkZXZlbG9wZXIiLCJlbnJvbGxlZENvdXJzZXMiOltdLCJ1cGxvYWRlZENvdXJzZXMiOlsiNjczYzgyMDFkOTgxNjljZjAxYTJkZWI2IiwiNjczYzgyYTBkOTgxNjljZjAxYTJkZWJjIiwiNjczYzgyYzhkOTgxNjljZjAxYTJkZWMyIiwiNjczYzgyZTFkOTgxNjljZjAxYTJkZWM4IiwiNjczYzgyZWNkOTgxNjljZjAxYTJkZWNlIiwiNjczYzg0MTJkOTgxNjljZjAxYTJkZWQ0IiwiNjczYzg0MmRkOTgxNjljZjAxYTJkZWRhIiwiNjczYzg2NWYzZmNkMDcwZTZkM2NkYTYzIiwiNjczZDdmYzczMzI4ODFkN2ZmOTJhNzg1IiwiNjczZDgyMGIxNTU1YTNkOGY2Mzg5NjFhIiwiNjczZDgzMGQyOTc2YmVkMzlkMThkYWI0IiwiNjczZDgzNjAxYmRiMTEzMGM1MDIwMjBkIiwiNjczZGJhYjgyZTJiMjBlYzE3YmI1OGZjIl0sImlhdCI6MTczMjE3MDI5MCwiZXhwIjoxNzMyMjU2NjkwfQ.x_KVHnArJaNm3vWjm3ZVAdKqCujL4G0dasr9AI2fVfs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "courseId",
+									"value": "673dbab82e2b20ec17bb58fc",
+									"type": "text"
+								},
+								{
+									"key": "title",
+									"value": "another new section",
+									"type": "text"
+								},
+								{
+									"key": "lectureCount",
+									"value": "6",
+									"type": "text"
+								},
+								{
+									"key": "totalDuration",
+									"value": "30",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/section/add-section",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"section",
+								"add-section"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update section by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM1OTEzZWM4NDk4OTI1YjZkOWQyZjMiLCJuYW1lIjoibWFrc3VkIGJodWl5YW4iLCJlbWFpbCI6ImhlaG9iMjE0NDlAY2lyb25leC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCQyd3NGaXNQVHpkNXlLRGY1Rm96NDEuaXEzMkJWaU1BWGpmR0JhN3pIOGdwaXouRWRTd1hKLiIsInJvbGUiOlsidXNlciIsImluc3RydWN0b3IiXSwiZW1haWxWZXJpZmllZCI6ZmFsc2UsImVtYWlsVmVyaWZ5Q29kZSI6IjcyNDAiLCJpc0FjdGl2ZSI6dHJ1ZSwiY29tcGFueU5hbWUiOiJiZGNhbGxpbmciLCJpbWFnZSI6InB1YmxpYy91cGxvYWRzL2ltYWdlcy8xNzMxOTk3NDgzMjIyLVNjcmVlbnNob3QgKDEwKS5wbmciLCJwaG9uZSI6IjAxODg4ODg4OCIsInByb2Zlc3Npb24iOiJkZXZlbG9wZXIiLCJlbnJvbGxlZENvdXJzZXMiOltdLCJ1cGxvYWRlZENvdXJzZXMiOlsiNjczYzgyMDFkOTgxNjljZjAxYTJkZWI2IiwiNjczYzgyYTBkOTgxNjljZjAxYTJkZWJjIiwiNjczYzgyYzhkOTgxNjljZjAxYTJkZWMyIiwiNjczYzgyZTFkOTgxNjljZjAxYTJkZWM4IiwiNjczYzgyZWNkOTgxNjljZjAxYTJkZWNlIiwiNjczYzg0MTJkOTgxNjljZjAxYTJkZWQ0IiwiNjczYzg0MmRkOTgxNjljZjAxYTJkZWRhIiwiNjczYzg2NWYzZmNkMDcwZTZkM2NkYTYzIiwiNjczZDdmYzczMzI4ODFkN2ZmOTJhNzg1IiwiNjczZDgyMGIxNTU1YTNkOGY2Mzg5NjFhIiwiNjczZDgzMGQyOTc2YmVkMzlkMThkYWI0IiwiNjczZDgzNjAxYmRiMTEzMGM1MDIwMjBkIiwiNjczZGJhYjgyZTJiMjBlYzE3YmI1OGZjIl0sImlhdCI6MTczMjE3MDI5MCwiZXhwIjoxNzMyMjU2NjkwfQ.x_KVHnArJaNm3vWjm3ZVAdKqCujL4G0dasr9AI2fVfs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "title updated",
+									"type": "text"
+								},
+								{
+									"key": "lectureCount",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "totalDuration",
+									"value": "40",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/section/update-section-by-id/673ece5a44d1dd2cde6c959e",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"section",
+								"update-section-by-id",
+								"673ece5a44d1dd2cde6c959e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete a section",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"division\": \"General Doctor\",\r\n  \"doctorType\": \"vascularogist\",\r\n  \"dateTimes\": [\r\n    \"2024-10-10T10:30:00Z\",\r\n    \"2024-10-11T14:30:00Z\"\r\n  ],\r\n  \"daysOfWeek\": [\r\n    \"sunday\",\r\n    \"tuesday\"\r\n  ],\r\n  \"consultationType\": \"video\",\r\n  \"doctorId\": \"670127ed7ad3ed2c53e489b1\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/section/delete-section-by-id/673ece5a44d1dd2cde6c959e",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"section",
+								"delete-section-by-id",
+								"673ece5a44d1dd2cde6c959e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "section enable disable",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"division\": \"General Doctor\",\r\n  \"doctorType\": \"vascularogist\",\r\n  \"dateTimes\": [\r\n    \"2024-10-10T10:30:00Z\",\r\n    \"2024-10-11T14:30:00Z\"\r\n  ],\r\n  \"daysOfWeek\": [\r\n    \"sunday\",\r\n    \"tuesday\"\r\n  ],\r\n  \"consultationType\": \"video\",\r\n  \"doctorId\": \"670127ed7ad3ed2c53e489b1\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/section/toggle-enable-disable-section/673ece5a44d1dd2cde6c959e",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"section",
+								"toggle-enable-disable-section",
+								"673ece5a44d1dd2cde6c959e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "lecture",
+			"item": [
+				{
+					"name": "get all lectures under one section",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "doctor@email.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "doctor",
+									"type": "text"
+								},
+								{
+									"key": "nhsNumber",
+									"value": "211",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "doctor",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/lecture/get-all-lectures-of-one-section/673ece5a44d1dd2cde6c959e",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"lecture",
+								"get-all-lectures-of-one-section",
+								"673ece5a44d1dd2cde6c959e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get lecture by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "doctor@email.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "doctor",
+									"type": "text"
+								},
+								{
+									"key": "nhsNumber",
+									"value": "211",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "doctor",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/lecture/get-lecture-by-id/673f090d426d3fa395746dbe",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"lecture",
+								"get-lecture-by-id",
+								"673f090d426d3fa395746dbe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all lectures under one course",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "doctor@email.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "doctor",
+									"type": "text"
+								},
+								{
+									"key": "nhsNumber",
+									"value": "211",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "doctor",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/lecture/get-all-lectures-of-one-course/673dbab82e2b20ec17bb58fc",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"lecture",
+								"get-all-lectures-of-one-course",
+								"673dbab82e2b20ec17bb58fc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add a lecture",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM1OTEzZWM4NDk4OTI1YjZkOWQyZjMiLCJuYW1lIjoibWFrc3VkIGJodWl5YW4iLCJlbWFpbCI6ImhlaG9iMjE0NDlAY2lyb25leC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCQyd3NGaXNQVHpkNXlLRGY1Rm96NDEuaXEzMkJWaU1BWGpmR0JhN3pIOGdwaXouRWRTd1hKLiIsInJvbGUiOlsidXNlciIsImluc3RydWN0b3IiXSwiZW1haWxWZXJpZmllZCI6ZmFsc2UsImVtYWlsVmVyaWZ5Q29kZSI6IjcyNDAiLCJpc0FjdGl2ZSI6dHJ1ZSwiY29tcGFueU5hbWUiOiJiZGNhbGxpbmciLCJpbWFnZSI6InB1YmxpYy91cGxvYWRzL2ltYWdlcy8xNzMxOTk3NDgzMjIyLVNjcmVlbnNob3QgKDEwKS5wbmciLCJwaG9uZSI6IjAxODg4ODg4OCIsInByb2Zlc3Npb24iOiJkZXZlbG9wZXIiLCJlbnJvbGxlZENvdXJzZXMiOltdLCJ1cGxvYWRlZENvdXJzZXMiOlsiNjczYzgyMDFkOTgxNjljZjAxYTJkZWI2IiwiNjczYzgyYTBkOTgxNjljZjAxYTJkZWJjIiwiNjczYzgyYzhkOTgxNjljZjAxYTJkZWMyIiwiNjczYzgyZTFkOTgxNjljZjAxYTJkZWM4IiwiNjczYzgyZWNkOTgxNjljZjAxYTJkZWNlIiwiNjczYzg0MTJkOTgxNjljZjAxYTJkZWQ0IiwiNjczYzg0MmRkOTgxNjljZjAxYTJkZWRhIiwiNjczYzg2NWYzZmNkMDcwZTZkM2NkYTYzIiwiNjczZDdmYzczMzI4ODFkN2ZmOTJhNzg1IiwiNjczZDgyMGIxNTU1YTNkOGY2Mzg5NjFhIiwiNjczZDgzMGQyOTc2YmVkMzlkMThkYWI0IiwiNjczZDgzNjAxYmRiMTEzMGM1MDIwMjBkIiwiNjczZGJhYjgyZTJiMjBlYzE3YmI1OGZjIl0sImlhdCI6MTczMjE3MDI5MCwiZXhwIjoxNzMyMjU2NjkwfQ.x_KVHnArJaNm3vWjm3ZVAdKqCujL4G0dasr9AI2fVfs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "courseId",
+									"value": "673dbab82e2b20ec17bb58fc",
+									"type": "text"
+								},
+								{
+									"key": "sectionId",
+									"value": "673ed24ba7787f4694dc31ff",
+									"type": "text"
+								},
+								{
+									"key": "title",
+									"value": "a new lecture",
+									"type": "text"
+								},
+								{
+									"key": "duration",
+									"value": "30",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "a new lecture description",
+									"type": "text"
+								},
+								{
+									"key": "position",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "videoFile",
+									"type": "file",
+									"src": "/C:/Users/ABIR/Downloads/sample.mp4"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/ABIR/Downloads/My affiliate list (1).png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/lecture/add-lecture",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"lecture",
+								"add-lecture"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update a lecture by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM1OTEzZWM4NDk4OTI1YjZkOWQyZjMiLCJuYW1lIjoibWFrc3VkIGJodWl5YW4iLCJlbWFpbCI6ImhlaG9iMjE0NDlAY2lyb25leC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCQyd3NGaXNQVHpkNXlLRGY1Rm96NDEuaXEzMkJWaU1BWGpmR0JhN3pIOGdwaXouRWRTd1hKLiIsInJvbGUiOlsidXNlciIsImluc3RydWN0b3IiXSwiZW1haWxWZXJpZmllZCI6ZmFsc2UsImVtYWlsVmVyaWZ5Q29kZSI6IjcyNDAiLCJpc0FjdGl2ZSI6dHJ1ZSwiY29tcGFueU5hbWUiOiJiZGNhbGxpbmciLCJpbWFnZSI6InB1YmxpYy91cGxvYWRzL2ltYWdlcy8xNzMxOTk3NDgzMjIyLVNjcmVlbnNob3QgKDEwKS5wbmciLCJwaG9uZSI6IjAxODg4ODg4OCIsInByb2Zlc3Npb24iOiJkZXZlbG9wZXIiLCJlbnJvbGxlZENvdXJzZXMiOltdLCJ1cGxvYWRlZENvdXJzZXMiOlsiNjczYzgyMDFkOTgxNjljZjAxYTJkZWI2IiwiNjczYzgyYTBkOTgxNjljZjAxYTJkZWJjIiwiNjczYzgyYzhkOTgxNjljZjAxYTJkZWMyIiwiNjczYzgyZTFkOTgxNjljZjAxYTJkZWM4IiwiNjczYzgyZWNkOTgxNjljZjAxYTJkZWNlIiwiNjczYzg0MTJkOTgxNjljZjAxYTJkZWQ0IiwiNjczYzg0MmRkOTgxNjljZjAxYTJkZWRhIiwiNjczYzg2NWYzZmNkMDcwZTZkM2NkYTYzIiwiNjczZDdmYzczMzI4ODFkN2ZmOTJhNzg1IiwiNjczZDgyMGIxNTU1YTNkOGY2Mzg5NjFhIiwiNjczZDgzMGQyOTc2YmVkMzlkMThkYWI0IiwiNjczZDgzNjAxYmRiMTEzMGM1MDIwMjBkIiwiNjczZGJhYjgyZTJiMjBlYzE3YmI1OGZjIl0sImlhdCI6MTczMjE3MDI5MCwiZXhwIjoxNzMyMjU2NjkwfQ.x_KVHnArJaNm3vWjm3ZVAdKqCujL4G0dasr9AI2fVfs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "a new lecture updated",
+									"type": "text"
+								},
+								{
+									"key": "duration",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "a new lecture description updated",
+									"type": "text"
+								},
+								{
+									"key": "position",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "videoFile",
+									"type": "file",
+									"src": "/C:/Users/ABIR/Downloads/sample.mp4"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/ABIR/Downloads/My affiliate list (1).png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/lecture/update-lecture-by-id/673f090d426d3fa395746dbe",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"lecture",
+								"update-lecture-by-id",
+								"673f090d426d3fa395746dbe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete a lecture",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"division\": \"General Doctor\",\r\n  \"doctorType\": \"vascularogist\",\r\n  \"dateTimes\": [\r\n    \"2024-10-10T10:30:00Z\",\r\n    \"2024-10-11T14:30:00Z\"\r\n  ],\r\n  \"daysOfWeek\": [\r\n    \"sunday\",\r\n    \"tuesday\"\r\n  ],\r\n  \"consultationType\": \"video\",\r\n  \"doctorId\": \"670127ed7ad3ed2c53e489b1\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/lecture/delete-lecture-by-id/673f090d426d3fa395746dbe",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"lecture",
+								"delete-lecture-by-id",
+								"673f090d426d3fa395746dbe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "lecture enable disable",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"division\": \"General Doctor\",\r\n  \"doctorType\": \"vascularogist\",\r\n  \"dateTimes\": [\r\n    \"2024-10-10T10:30:00Z\",\r\n    \"2024-10-11T14:30:00Z\"\r\n  ],\r\n  \"daysOfWeek\": [\r\n    \"sunday\",\r\n    \"tuesday\"\r\n  ],\r\n  \"consultationType\": \"video\",\r\n  \"doctorId\": \"670127ed7ad3ed2c53e489b1\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/lecture/toggle-enable-disable-lecture/673f090d426d3fa395746dbe",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"lecture",
+								"toggle-enable-disable-lecture",
+								"673f090d426d3fa395746dbe"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "http://localhost:4000",
+			"type": "default"
+		}
+	]
+}

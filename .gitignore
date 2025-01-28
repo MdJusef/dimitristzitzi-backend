@@ -26,5 +26,5 @@ server/access.log
 *.sw?
 
 sample.txt
-uploads/videos
+uploads/
 config/uploads/videos
