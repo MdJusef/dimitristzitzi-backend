@@ -27,4 +27,5 @@ server/access.log
 
 sample.txt
 # uploads/
+public/
 config/uploads/videos
