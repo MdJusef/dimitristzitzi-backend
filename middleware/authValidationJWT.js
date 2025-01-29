@@ -14,6 +14,7 @@ const isAuthorizedAdmin = (req, res, next) => {
     const token = authorization.split(" ")[1];
     console.log("token", token);
     const validate = jsonWebToken.verify(token, process.env.JWT_SECRET);
+    console.log("validate", validate);
 
     if (!validate) {
       return res
@@ -21,9 +22,9 @@ const isAuthorizedAdmin = (req, res, next) => {
         .send(failure("Unauthorized access, token not validated"));
     }
 
-    req.user = validate;
-    console.log("validate", validate.role);
-    if (validate.role == "admin") {
+    const roles = validate.role;
+    if (roles.includes("admin")) {
+      req.user = validate;
       next();
     } else {
       return res
