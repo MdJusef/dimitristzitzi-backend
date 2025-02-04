@@ -22,8 +22,8 @@ let transporter = nodemailer.createTransport({
 
 let transporterGmail = nodemailer.createTransport({
   host: "smtp.gmail.com",
-  port: 587, // Change to 465 if needed
-  secure: false, // Set to true for port 465
+  port: 465, // Change to 465 if needed
+  secure: true, // Set to true for port 465
   auth: {
     user: process.env.EMAIL_HOST_USER,
     pass: process.env.EMAIL_HOST_PASS,
