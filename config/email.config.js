@@ -12,11 +12,24 @@ let transporter = nodemailer.createTransport({
   },
 });
 
+// let transporterGmail = nodemailer.createTransport({
+//   service: "gmail",
+//   auth: {
+//     user: process.env.EMAIL_HOST_USER, // generated ethereal user
+//     pass: process.env.EMAIL_HOST_PASS, // generated ethereal password
+//   },
+// });
+
 let transporterGmail = nodemailer.createTransport({
-  service: "gmail",
+  host: "smtp.gmail.com",
+  port: 587, // Change to 465 if needed
+  secure: false, // Set to true for port 465
   auth: {
-    user: process.env.EMAIL_HOST_USER, // generated ethereal user
-    pass: process.env.EMAIL_HOST_PASS, // generated ethereal password
+    user: process.env.EMAIL_HOST_USER,
+    pass: process.env.EMAIL_HOST_PASS,
+  },
+  tls: {
+    rejectUnauthorized: false, // Helps with some SSL issues
   },
 });
 
